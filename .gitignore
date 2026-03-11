@@ -1,56 +1,41 @@
-# --------------------
 # Node modules
-# --------------------
 node_modules/
 
-# --------------------
-# Build outputs
-# --------------------
-dist/
+# Build output
 build/
-dist-ssr/
+dist/
+.out/
+.cache/
 
-# --------------------
-# Environment variables
-# --------------------
-.env
-.env.*
-.env.local
-.env.development
-.env.test
-.env.production
-
-# --------------------
 # Logs
-# --------------------
-logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-# --------------------
-# Test coverage
-# --------------------
-coverage/
+# Local environment files
+.env
+.env.local
+.env.*.local
 
-# --------------------
-# IDE / OS files
-# --------------------
+# OS files
+.DS_Store
+Thumbs.db
+
+# Amplify artifacts you don’t need in Git
+amplify/.config/local-env-info.json
+amplify/.config/local-aws-info.json
+amplify/.config/project-config.json
+amplify/.config/amplify-meta.json
+amplify/.config/team-provider-info.json
+amplify/.temp/
+
+# Optional: Editor files
 .vscode/
 .idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-*.swp
-*.sw?
-.DS_Store
-Thumbs.db
 
-# --------------------
-# Misc
-# --------------------
-*.local
+# Optional: Mac/Linux hidden files
+*.swp
