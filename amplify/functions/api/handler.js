@@ -1,0 +1,78 @@
+// amplify/functions/api/handler.js
+
+const addToCartTwo = require("./routes/add-to-cart-two");
+const addToCart = require("./routes/add-to-cart");
+const categories = require("./routes/categories");
+const categoryProducts = require("./routes/category-products");
+const checkAdminRole = require("./routes/check-admin-role");
+const checkAdmin = require("./routes/check-admin");
+const createOrder = require("./routes/create-order");
+const getAdminCheck = require("./routes/get-admin-check");
+const getAdminPhoneTwo = require("./routes/get-admin-phone-two");
+const getAdminPhone = require("./routes/get-admin-phone");
+const getAllCategories = require("./routes/get-all-categories");
+const getOffers = require("./routes/get-offers");
+const getOrderDetails = require("./routes/get-order-details");
+const getOrderTracking = require("./routes/get-order-tracking");
+const getProductById = require("./routes/get-product-by-id");
+const getUserOrders = require("./routes/get-user-orders");
+const getUserProfile = require("./routes/get-user-profile");
+const homeIndex = require("./routes/index");
+const productPreview = require("./routes/product-preview");
+const products = require("./routes/products");
+const searchProducts = require("./routes/search-products");
+const searchSuggestions = require("./routes/search-suggestions");
+const trendingKeywords = require("./routes/trending-keywords");
+
+exports.handler = async (event) => {
+  const path = event.rawPath || event.path;
+
+  // Global headers
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+
+  // Route mapping
+  const routes = {
+    "/add-to-cart-two": addToCartTwo,
+    "/add-to-cart": addToCart,
+    "/categories": categories,
+    "/category-products": categoryProducts,
+    "/check-admin-role": checkAdminRole,
+    "/check-admin": checkAdmin,
+    "/create-order": createOrder,
+    "/get-admin-check": getAdminCheck,
+    "/get-admin-phone-two": getAdminPhoneTwo,
+    "/get-admin-phone": getAdminPhone,
+    "/get-all-categories": getAllCategories,
+    "/get-offers": getOffers,
+    "/get-order-details": getOrderDetails,
+    "/get-order-tracking": getOrderTracking,
+    "/get-product-by-id": getProductById,
+    "/get-user-orders": getUserOrders,
+    "/get-user-profile": getUserProfile,
+    "/product-preview": productPreview, // WhatsApp preview
+    "/products": products,
+    "/search-products": searchProducts,
+    "/search-suggestions": searchSuggestions,
+    "/trending-keywords": trendingKeywords,
+    "/": homeIndex,
+  };
+
+  // Find matching route
+  for (const route in routes) {
+    if (path.startsWith(route)) {
+      const response = await routes[route].handler(event);
+      // Ensure headers are applied
+      response.headers = { ...headers, ...(response.headers || {}) };
+      return response;
+    }
+  }
+
+  return {
+    statusCode: 404,
+    headers,
+    body: JSON.stringify({ message: "Route not found" }),
+  };
+};

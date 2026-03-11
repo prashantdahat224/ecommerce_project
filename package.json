@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^2.11.2",
     "@supabase/supabase-js": "^2.99.1",
     "@tailwindcss/vite": "^4.2.1",
+    "aws-amplify": "^6.16.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-redux": "^9.2.0",
@@ -21,14 +22,21 @@
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
+    "@aws-amplify/backend": "^1.21.1",
+    "@aws-amplify/backend-cli": "^1.8.2",
     "@eslint/js": "^9.39.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.2.2",
+    "aws-cdk-lib": "^2.234.1",
+    "constructs": "^10.5.1",
+    "esbuild": "^0.27.3",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
     "vite": "^7.3.1"
   }
 }
