@@ -4,7 +4,7 @@ import { Runtime } from "aws-cdk-lib/aws-lambda";
 
 export const api = defineFunction((scope) => {
   return new NodejsFunction(scope, "api-function", {
-    entry: "./handler.js",
+    entry: "amplify/functions/api/handler.js",
     handler: "handler",
     runtime: Runtime.NODEJS_20_X,
     environment: {
