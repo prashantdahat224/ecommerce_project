@@ -219,7 +219,7 @@ dispatch(toggleWishlist({ userId: user.id, productId: id }))
         <Header2 />
       </header>
 
-         <FullScreenLoader loading={loading2 || loading}
+         <FullScreenLoader loading={loading2}//|| loading
       message=" loading..."/>
       
        <ProccesMessages
