@@ -32,7 +32,7 @@ exports.handler = async (event) => {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type",
   };
-  
+   
   // Route mapping
   const routes = {
     "/add-to-cart-two": addToCartTwo,
