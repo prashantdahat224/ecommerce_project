@@ -28,7 +28,7 @@ exports.handler = async (event) => {
   const path = event.rawPath || event.path;
 
   // Global headers
-  const headers = {
+  const headers = { 
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type",
   };
