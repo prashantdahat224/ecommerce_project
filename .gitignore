@@ -43,8 +43,7 @@ Thumbs.db
 # Backend zip (Lambda deploy)
 # -----------------------
 backend.zip
-backend/node_modules/
-
+ 
 # -----------------------
 # AWS / deployment
 # -----------------------

@@ -1,0 +1,36 @@
+name: Deploy Backend to AWS Lambda (Mumbai)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Go inside your actual backend folder
+      - name: Install dependencies
+        run: |
+          cd backend/functions/api
+          npm install --production
+
+      # Zip only API folder (important)
+      - name: Zip Lambda package
+        run: |
+          cd backend/functions/api
+          zip -r api.zip .
+
+      # Deploy to AWS Lambda
+      - name: Deploy to Lambda
+        uses: appleboy/lambda-action@v0.1.9
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ap-south-1
+          function_name: ${{ secrets.LAMBDA_FUNCTION_NAME }}
+          zip_file: backend/functions/api/api.zip
