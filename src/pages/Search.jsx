@@ -5,6 +5,7 @@ import backIcon from "../assets/icon_download_back.png";
 import { Navigate } from "react-router-dom";
 import SearchSuggestionPlaceholder from "../components/placeHolder/SearchSuggestionPlaceholder" //search suggestion
 import SortDropdown from "../components/SortDropdown";
+import { API_URL } from "../config/api";
 
 
 
@@ -49,7 +50,7 @@ const [products2, setProducts2] = useState([]);
     debounceRef.current = setTimeout(async () => {
       try {
         const res = await fetch(
-          `/.netlify/functions/search-suggestions?q=${value}`
+          `${API_URL}/search-suggestions?q=${value}`
         );
         const data = await res.json();
         setSuggestions(data || []);
@@ -74,7 +75,7 @@ const [products2, setProducts2] = useState([]);
 
     try {
       const res = await fetch(
-        `/.netlify/functions/search-products?q=${keyword}&page=${pageNumber}&size=${pageSize}`
+        `${API_URL}/search-products?q=${keyword}&page=${pageNumber}&size=${pageSize}`
         
       );
     
@@ -101,7 +102,7 @@ const [products2, setProducts2] = useState([]);
     if (popularKeywords.length > 0) return;
 
     try {
-      const res = await fetch("/.netlify/functions/trending-keywords");
+      const res = await fetch(`${API_URL}/trending-keywords`);
       const data = await res.json();
       setPopularKeywords(data || []);
     } catch {}

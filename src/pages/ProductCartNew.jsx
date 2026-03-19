@@ -7,6 +7,7 @@ import back from "../assets/icon_download_back.png";
 import { useNavigate } from "react-router-dom";
 import BottomNavigation from "../components/BottomNavigation";
 import PurchaseNow from "../components/PurchaseNow";
+import { API_URL } from "../config/api";
 
 export default function ProductCartNew() {
      const userID = useSelector((state) => state.auth.user?.id); //added

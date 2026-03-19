@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import back from "../assets/icon_download_back.png";
+import { API_URL } from "../config/api";
 
 
 const SettingsPage = () => {

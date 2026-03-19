@@ -4,6 +4,7 @@ import { supabase } from "../supabaseClient";
 import { useNavigate } from "react-router-dom";
  import FullScreenLoader from "../utils/FullScreenLoader";
  import back from "../assets/icon_download_back.png";
+import { API_URL } from "../config/api";
 
 
 export default function OrdersPage() {
@@ -81,7 +82,7 @@ useEffect(() => {
       setLoading(true);
 
       const res = await fetch(
-        `/.netlify/functions/get-user-orders?id=${userID}`
+        `${API_URL}/get-user-orders?id=${userID}`
       );
 
       const data = await res.json();

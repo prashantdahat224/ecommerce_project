@@ -4,7 +4,8 @@ import { supabase } from "../supabaseClient";
 import CategoriesPlaceholder from "../components/placeHolder/CategoriesPlaceholder";
 import back from "../assets/icon_download_back.png";
 import LazyImage from "../components/placeHolder/lazyImage";
- 
+ import { API_URL } from "../config/api";
+
 export default function Categories() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ export default function Categories() {
   try {
     setLoading(true);
 
-    const res = await fetch("/.netlify/functions/get-all-categories");
+    const res = await fetch(`${API_URL}/get-all-categories`);
     const data = await res.json();
 
     setCategories(data || []);

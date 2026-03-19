@@ -1,6 +1,7 @@
 import React from "react";
  import back from "../assets/icon_download_back.png";
 import { useLocation, useNavigate } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 const ImagePage = () => {
  // const { imageUrl } = useParams(); // get the route param

@@ -8,6 +8,7 @@ import { setUser } from "../redux/authSlice"  //
 import { supabase } from "../supabaseClient";
 import FullScreenLoader from "../utils/FullScreenLoader";
 import back from "../assets/icon_download_back.png";
+import { API_URL } from "../config/api";
 
 
 //checked / database

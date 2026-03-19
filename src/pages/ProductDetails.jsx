@@ -16,6 +16,7 @@ import ImageSwiper from "../components/ImageSwiper"; // added
   import LoginDialog from "../components/LoginDialog"
    import ProccesMessages from "../components/ProccesMessages";
  import ShareDialog_new from "../components/ShareDialog_new";
+import { API_URL } from "../config/api";
 
  
 
@@ -70,7 +71,7 @@ export default function ProductDetails() {
       setLoading2(true);
 
       const res = await fetch(
-        `/.netlify/functions/get-product-by-id?id=${id}`
+        `${API_URL}/get-product-by-id?id=${id}`
       );
 
       const data = await res.json();
@@ -135,7 +136,7 @@ export default function ProductDetails() {
       return;
     }
 
-    const res = await fetch("/.netlify/functions/add-to-cart-two", {
+    const res = await fetch(`${API_URL}/add-to-cart-two`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

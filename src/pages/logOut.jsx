@@ -5,6 +5,7 @@ import { supabase } from "../supabaseClient";
 import { useDispatch } from "react-redux";
 import { clearUser } from "../redux/authSlice";
 import { clearUserData } from "../redux/userDataSlice";
+import { API_URL } from "../config/api";
 
 
 

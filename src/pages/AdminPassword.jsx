@@ -7,6 +7,7 @@ import { supabase } from "../supabaseClient";
 import { useDispatch, useSelector } from "react-redux";
 import { setAdmin } from "../redux/adminSlice";
  import FullScreenLoader from "../utils/FullScreenLoader"; 
+import { API_URL } from "../config/api";
 
 
 //checked / database
@@ -34,7 +35,7 @@ function AdminPassword() {
 const AdminCheck = async () => {
   try {
     const res = await fetch(
-      `/.netlify/functions/check-admin-role?id=${id}`
+      `${API_URL}/check-admin-role?id=${id}`
     );
     const data = await res.json();
 
@@ -81,7 +82,7 @@ const AdminCheck = async () => {
 
    // console.log("isAdmin",isAdmin);
 
-    const res = await fetch("/.netlify/functions/get-admin-check");
+    const res = await fetch(`${API_URL}/get-admin-check`);
     const data = await res.json();
 
     if (data.code) {

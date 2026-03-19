@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useState,useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import BottomNavigation from "../components/BottomNavigation";
- 
+ import { API_URL } from "../config/api";
+
 
 
 const AskUs = () => {
@@ -28,7 +29,7 @@ const whatsappUrl = phoneNumber
     try {
       setLoading(true);
 
-      const res = await fetch("/.netlify/functions/get-admin-phone");
+      const res = await fetch(`${API_URL}/get-admin-phone`);
       const data = await res.json();
 
       if (!data.error) {

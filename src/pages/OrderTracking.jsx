@@ -4,6 +4,7 @@ import { supabase } from "../supabaseClient";    //supabase"
  import FullScreenLoader from "../utils/FullScreenLoader";
  import back from "../assets/icon_download_back.png";
  import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 
 
@@ -20,7 +21,7 @@ const fetchTracking = async () => {
     setLoading(true);
 
     const res = await fetch(
-      `/.netlify/functions/get-order-tracking?orderId=${orderId}`
+      `${API_URL}/get-order-tracking?orderId=${orderId}`
     );
 
     const data = await res.json();

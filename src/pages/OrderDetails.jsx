@@ -5,7 +5,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
  import FullScreenLoader from "../utils/FullScreenLoader"; 
 import back from "../assets/icon_download_back.png";
- 
+ import { API_URL } from "../config/api";
+
 
 export default function OrderDetails() {
   const { orderId } = useParams();
@@ -54,7 +55,7 @@ export default function OrderDetails() {
       setLoading(true);
 
       const res = await fetch(
-        `/.netlify/functions/get-order-details?id=${orderId}`
+        `${API_URL}/get-order-details?id=${orderId}`
       );
 
       const data = await res.json();

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../supabaseClient";   // ✅ Supabase client
 import back from "../assets/icon_download_back.png";
+import { API_URL } from "../config/api";
 
 
 //import logo from "../assets/logo.png";       // App logo PNG

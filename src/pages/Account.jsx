@@ -12,6 +12,8 @@ import helpCenter from "../assets/icons_account_headset.png";
 import userIcon from "../assets/icon_account_user.png";
 import back from "../assets/icon_download_back.png";
 import { useSelector } from "react-redux";
+import { API_URL } from "../config/api";
+
  
 
     
@@ -36,7 +38,7 @@ function Account() {
       setLoading(true);
 
       const res = await fetch(
-        `/.netlify/functions/get-user-profile?id=${user.id}`
+        `${API_URL}/get-user-profile?id=${user.id}`
       );
 
       const data = await res.json();
@@ -47,7 +49,7 @@ function Account() {
 
 
           const adminRes = await fetch(
-          `/.netlify/functions/check-admin?id=${user.id}`
+          `${API_URL}/check-admin?id=${user.id}`
         );
         const adminData = await adminRes.json();
 

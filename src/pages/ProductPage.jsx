@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { API_URL } from "../config/api";
+
 
 export default function ProductPage({ productId }) {
   const [htmlContent, setHtmlContent] = useState("");
@@ -8,7 +10,7 @@ export default function ProductPage({ productId }) {
     try {
       // Call your Netlify Function
       const res = await fetch(
-        `/.netlify/functions/index?id=${productId}`
+        `${API_URL}/index?id=${productId}`
       );
       const text = await res.text();
       setHtmlContent(text);

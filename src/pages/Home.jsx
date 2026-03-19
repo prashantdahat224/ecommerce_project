@@ -11,6 +11,7 @@ import BottomNavigation from "../components/BottomNavigation";
 import OfferPosterPlaceholder from "../components/placeHolder/OfferPosterPlaceholder"
 import CategoryBar from "../components/homeComponents/CategoryBar";
 import CategoryProductList from "../components/homeComponents/CategoryProductList";
+import { API_URL } from "../config/api";
 
   
 function Home() {
