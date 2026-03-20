@@ -4,8 +4,7 @@ import icon2 from "../assets/icons_heart_black_for_card.png";
 import icon from "../assets/icons_plus_ad_to_cart.png";
 import LazyImage from "./placeHolder/lazyImage";
 import { Link } from "react-router-dom";
-import { getPublicImage } from "./getPublicImage";
-// import { supabase } from '../supabaseClient';
+ // import { supabase } from '../supabaseClient';
 
 import { useSelector } from "react-redux";
 import ProccesMessages from "./ProccesMessages";
@@ -21,7 +20,7 @@ function ProductCard({ product }) {
 
   const { user, loading } = useSelector((state) => state.auth);
 
-  const imageUrl = getPublicImage(product.product_image || "");
+  const imageUrl =  product.product_image || "";
    const [cartMessage, setCartMessage] = useState(false);//added
       const [message, setMessage] = useState("");//added
           const [showDialog, setShowDialog] = useState(false);

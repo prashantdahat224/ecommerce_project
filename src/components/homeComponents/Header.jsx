@@ -14,7 +14,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white text-black">
+    <header className="sticky top-0 w-full bg-white text-black">
       <div className="flex items-center justify-between h-14 pr-4 sm:px-6 lg:px-8">
         
         {/* Left: Logo */}
@@ -23,7 +23,7 @@ const Header = () => {
            
             src={logo}
             alt="App Logo"
-            className="h-40 w-auto sm:h-52 object-cover scale-125  "
+            className="h-40 w-auto sm:h-42 object-cover scale-125  "
           />
         </div>
 

@@ -2,8 +2,8 @@
 
 const { createClient } = require("@supabase/supabase-js");
 
-console.log("Supabase URL:", process.env.SUPABASE_URL); // ✅ log here
-console.log("Supabase Key:", process.env.SUPABASE_SERVICE_ROLE_KEY ? "Key is set" : "Key is missing");
+// console.log("Supabase URL:", process.env.SUPABASE_URL); // ✅ log here
+// console.log("Supabase Key:", process.env.SUPABASE_SERVICE_ROLE_KEY ? "Key is set" : "Key is missing");
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -17,8 +17,8 @@ exports.handler = async (event) => {
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   };
 
-  console.log("ENV URL:", process.env.SUPABASE_URL);
-console.log("EVENT:", event);
+//   console.log("ENV URL:", process.env.SUPABASE_URL);
+// console.log("EVENT:", event);
 
   try {
     const { data, error } = await supabase
@@ -35,8 +35,7 @@ console.log("EVENT:", event);
         body: JSON.stringify({ error: error.message })
       };
     }
-        console.log("Categories data:", data);
-
+ 
     const withUrls = (data || []).map(cat => {
       if (!cat.category_image) return cat;
 

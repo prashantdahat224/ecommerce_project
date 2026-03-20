@@ -28,10 +28,25 @@ exports.handler = async (event) => {
       };
     }
 
+    
+    const withUrls = (data || []).map(cat => {
+      if (!cat.product_image) return cat;
+
+      const { data: urlData } = supabase
+        .storage
+        .from("products")
+        .getPublicUrl(cat.product_image);
+
+      return {
+        ...cat,
+        product_image: urlData?.publicUrl || null
+      };
+    });
+
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
+      body: JSON.stringify(withUrls)
     };
 
   } catch (err) {

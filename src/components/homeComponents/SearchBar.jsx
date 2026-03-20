@@ -20,7 +20,7 @@ const SearchBar = ({
     const navigate =useNavigate();
      
   return (
-    <div className="lg:border-b border-gray-300">
+    <div className="lg:border-b  z-50 border-gray-300"> {/*added //  z-50*/}
     <div className="w-full flex items-center gap-2 "> 
    
      {/* added */}
