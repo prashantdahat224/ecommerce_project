@@ -14,6 +14,9 @@ exports.handler = async (event) => {
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   };
 
+  console.log("ENV URL:", process.env.SUPABASE_URL);
+console.log("EVENT:", event);
+
   try {
     const { data, error } = await supabase
       .from("categories")
