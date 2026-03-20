@@ -26,8 +26,7 @@ const trendingKeywords = require("./routes/trending-keywords");
 const register = require("./routes/register-user");
 const login = require("./routes/login-user");
 const session = require("./routes/session-check");
-const getImagePath = require("./routes/get-image-path");
-const editProfile = require("./routes/edit-profile-new");
+ const editProfile = require("./routes/edit-profile-new");
 const getProfile = require("./routes/get-profile-new");
 const helpCenter = require("./routes/help-center");
 const logout = require("./routes/logout");
@@ -87,8 +86,7 @@ body: "",
       "/register-user": register,   // ✅ new route
         "/login": login,   // ✅ new login route
           "/session-check": session,    
-          "/get-image-path": getImagePath,
-          "/edit-profile-new": editProfile,
+           "/edit-profile-new": editProfile,
           "/get-profile-new": getProfile,
             "/help-center": helpCenter,
               "/logout": logout,

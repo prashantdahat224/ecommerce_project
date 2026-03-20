@@ -35,7 +35,7 @@ function Home() {
     
     <div className="bg-white min-h-screen pb-20  lg:mx-50">
       
-      <div className="sticky top-0 z-50">
+      <div className="sticky top-0  ">
         <Header />
       </div>
       
@@ -46,7 +46,7 @@ function Home() {
           {/* Desktop: inline near search bar */}
        
      
-      <div className="sticky top-14 z-40 bg-white px-4 sm:px-6 lg:px-8">
+      <div className="sticky top-14 z-50 bg-white px-4 sm:px-6 lg:px-8">
         
         
         <SearchBar 
