@@ -1,51 +1,80 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { supabase } from "../supabaseClient";
+// import { supabase } from "../supabaseClient";
+import { API_URL } from "../config/api";
 
-// Fetch wishlist once (called from App.jsx)
+//  export const fetchWishlist = createAsyncThunk(
+//   "wishlist/fetchWishlist",
+//   async (userId) => {
+//     const { data, error } = await supabase
+//       .from("wish_list_products")
+//       .select("product_id")
+//       .eq("user_id", userId);
+
+//     if (error) throw error;
+
+//     return data.map((item) => item.product_id);
+//   }
+// );
 export const fetchWishlist = createAsyncThunk(
   "wishlist/fetchWishlist",
   async (userId) => {
-    const { data, error } = await supabase
-      .from("wish_list_products")
-      .select("product_id")
-      .eq("user_id", userId);
+    const response = await fetch(`${API_URL}/wishlist`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId, action: "fetch" }),
+    });
 
-    if (error) throw error;
+    const result = await response.json();
+    if (result.error) throw new Error(result.error);
 
-    return data.map((item) => item.product_id);
+    return result.items;
   }
 );
 
-// Toggle wishlist (optimistic)
+//  export const toggleWishlist = createAsyncThunk(
+//   "wishlist/toggleWishlist",
+//   async ({ userId, productId }) => {
+//     const { data: existing, error: fetchError } = await supabase
+//       .from("wish_list_products")
+//       .select("*")
+//       .eq("user_id", userId)
+//       .eq("product_id", productId)
+//       .single();
+
+//     if (fetchError && fetchError.code !== "PGRST116") throw fetchError;
+
+//     if (existing) {
+//       const { error } = await supabase
+//         .from("wish_list_products")
+//         .delete()
+//         .eq("user_id", userId)
+//         .eq("product_id", productId);
+
+//       if (error) throw error;
+//       return { productId, action: "remove" };
+//     } else {
+//       const { error } = await supabase
+//         .from("wish_list_products")
+//         .insert([{ user_id: userId, product_id: productId }]);
+
+//       if (error) throw error;
+//       return { productId, action: "add" };
+//     }
+//   }
+// );
 export const toggleWishlist = createAsyncThunk(
   "wishlist/toggleWishlist",
   async ({ userId, productId }) => {
-    const { data: existing, error: fetchError } = await supabase
-      .from("wish_list_products")
-      .select("*")
-      .eq("user_id", userId)
-      .eq("product_id", productId)
-      .single();
+    const response = await fetch(`${API_URL}/wishlist`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId, productId, action: "toggle" }),
+    });
 
-    if (fetchError && fetchError.code !== "PGRST116") throw fetchError;
+    const result = await response.json();
+    if (result.error) throw new Error(result.error);
 
-    if (existing) {
-      const { error } = await supabase
-        .from("wish_list_products")
-        .delete()
-        .eq("user_id", userId)
-        .eq("product_id", productId);
-
-      if (error) throw error;
-      return { productId, action: "remove" };
-    } else {
-      const { error } = await supabase
-        .from("wish_list_products")
-        .insert([{ user_id: userId, product_id: productId }]);
-
-      if (error) throw error;
-      return { productId, action: "add" };
-    }
+    return result; // { productId, action: "add" | "remove" }
   }
 );
 

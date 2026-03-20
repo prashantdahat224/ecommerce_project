@@ -5,7 +5,7 @@ import { Link} from "react-router-dom";
  import { useNavigate, useLocation } from "react-router-dom"; 
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/authSlice"  //
-import { supabase } from "../supabaseClient";
+// import { supabase } from "../supabaseClient";
 import FullScreenLoader from "../utils/FullScreenLoader";
 import back from "../assets/icon_download_back.png";
 import { API_URL } from "../config/api";

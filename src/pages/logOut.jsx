@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+// import { supabase } from "../supabaseClient";
 
 import { useDispatch } from "react-redux";
 import { clearUser } from "../redux/authSlice";

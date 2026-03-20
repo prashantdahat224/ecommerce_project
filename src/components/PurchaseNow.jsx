@@ -2,7 +2,7 @@ import React from "react";
 import icon1 from "../assets/icon_whatsapp.png"
 import icon2 from "../assets/icon_square.png"
 import { useState,useEffect } from "react";
-import { supabase } from "../supabaseClient";
+// import { supabase } from "../supabaseClient";
 import FullScreenLoader from "../utils/FullScreenLoader";
 
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
+// import { supabase } from "../supabaseClient";
  import { useSelector } from "react-redux";  //added
 import CartItem from "../components/CartItem";
  import FullScreenLoader from "../utils/FullScreenLoader"; 

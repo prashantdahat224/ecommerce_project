@@ -33,6 +33,7 @@ const helpCenter = require("./routes/help-center");
 const logout = require("./routes/logout");
 const productCart = require("./routes/product-cart-new");
 const productWishlist = require("./routes/product-wishlist-new");
+const wishlist = require("./routes/wishlist-new");
 
 exports.handler = async (event) => {
   const path = event.rawPath || event.path;
@@ -77,6 +78,7 @@ exports.handler = async (event) => {
               "/logout": logout,
                 "/product-cart": productCart,
                   "/product-wishlist-new": productWishlist,
+                      "/wishlist-new": wishlist,
       
     "/": homeIndex,
   };

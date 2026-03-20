@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { supabase } from "../supabaseClient";
+//import { supabase } from "../supabaseClient";
 import { setUserData } from "../redux/userDataSlice";
 import back from "../assets/icon_download_back.png";
 import { useNavigate } from "react-router-dom";

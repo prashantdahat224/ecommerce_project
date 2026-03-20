@@ -3,7 +3,7 @@
  import { toggleWishlist } from "../redux/wishlistSlice"; //added
 
 import { Outlet,useParams ,useNavigate } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+// import { supabase } from "../supabaseClient";
 import share from "../assets/icon_account_share.png";
 import icon_whish_list from "../assets/icons_account_heart.png";
 import icon_whish_list_clicked from "../assets/icons_heart_black_for_card.png";

@@ -4,7 +4,7 @@ import FullScreenLoader from "../utils/FullScreenLoader";
 import back from "../assets/icon_download_back.png";
 import { useNavigate } from "react-router-dom";
 import { useState,useEffect } from "react";
-import { supabase } from "../supabaseClient";
+//import { supabase } from "../supabaseClient";
 import BottomNavigation from "../components/BottomNavigation";
  import { API_URL } from "../config/api";
 

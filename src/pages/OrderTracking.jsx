@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { supabase } from "../supabaseClient";    //supabase"
+// import { supabase } from "../supabaseClient";    //supabase"
  import FullScreenLoader from "../utils/FullScreenLoader";
  import back from "../assets/icon_download_back.png";
  import { useNavigate } from "react-router-dom";

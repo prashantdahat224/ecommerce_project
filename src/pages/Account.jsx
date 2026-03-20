@@ -1,6 +1,6 @@
 import { useEffect, useState,useRef   } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+//import { supabase } from "../supabaseClient";
  
 import BottomNavigation from "../components/BottomNavigation";
 import Placeholder from "../components/placeHolder/PlaceholderAccount";
@@ -222,7 +222,7 @@ function Account() {
            <h3 className="text-lg font-semibold mb-4">Admin Panel </h3>
           <div
             className="border rounded-md p-4 bg-gray-200"
-            onClick={() => navigate(`/AdminPassword/${profile.id}`)}
+            // onClick={() => navigate(`/AdminPassword/${profile.id}`)}
           >
             <p>Manage users, products, and settings here </p>  
             <p className="text-xs ">hope you got the permision from @JAYPRAKASH & @PRASHANT</p>

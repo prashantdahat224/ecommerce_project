@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+//import { supabase } from "../supabaseClient";
 import CategoriesPlaceholder from "../components/placeHolder/CategoriesPlaceholder";
 import back from "../assets/icon_download_back.png";
 import LazyImage from "../components/placeHolder/lazyImage";

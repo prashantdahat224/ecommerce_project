@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
  import { useSelector } from "react-redux";  //added
-import { supabase } from "../supabaseClient";
+// import { supabase } from "../supabaseClient";
 import { useNavigate } from "react-router-dom";
  import FullScreenLoader from "../utils/FullScreenLoader";
  import back from "../assets/icon_download_back.png";

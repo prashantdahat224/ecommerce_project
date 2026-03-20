@@ -5,7 +5,7 @@ import icon from "../assets/icons_plus_ad_to_cart.png";
 import LazyImage from "./placeHolder/lazyImage";
 import { Link } from "react-router-dom";
 import { getPublicImage } from "./getPublicImage";
-import { supabase } from '../supabaseClient';
+// import { supabase } from '../supabaseClient';
 
 import { useSelector } from "react-redux";
 import ProccesMessages from "./ProccesMessages";
