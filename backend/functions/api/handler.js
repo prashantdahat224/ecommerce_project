@@ -37,6 +37,7 @@ const wishlist = require("./routes/wishlist-new");
 
 exports.handler = async (event) => {
   const path = event.rawPath || event.path;
+    const method = event.httpMethod || event.requestContext?.http?.method; //  added
 
   // Global headers
   const headers = {
@@ -98,6 +99,8 @@ body: "",
     "/": homeIndex,
   };
 
+
+  
   // Find matching route
   for (const route in routes) {
     if (path.startsWith(route)) {
