@@ -50,6 +50,14 @@ exports.handler = async (event) => {
 
 
   };
+  // ✅ HANDLE PREFLIGHT
+if (method === "OPTIONS") {
+return {
+statusCode: 200,
+headers,
+body: "",
+};
+}
    
   // Route mapping
   const routes = {
