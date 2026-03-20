@@ -1,5 +1,5 @@
 const { createClient } = require("@supabase/supabase-js");
-require("dotenv").config();
+//require("dotenv").config();
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -79,7 +79,7 @@ exports.handler = async (event) => {
 <head>
 <meta charset="utf-8" />
 <meta property="og:title" content="${product.name}" />
-<meta property="og:description" content="${product.about || "Gift from Gift shop"}" />
+<meta property="og:description" content="${product.about || " from WISHMOS"}" />
 <meta property="og:image" content="${imageUrl}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
