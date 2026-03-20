@@ -40,8 +40,15 @@ exports.handler = async (event) => {
 
   // Global headers
   const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type",
+    // "Access-Control-Allow-Origin": "*",
+    // "Access-Control-Allow-Headers": "Content-Type",
+    // Global headers
+ 
+  "Access-Control-Allow-Origin": "https://www.wishmos.com", // or "*" for all
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+
+
   };
    
   // Route mapping
