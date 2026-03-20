@@ -8,6 +8,12 @@ const supabase = createClient(
 );
 
 exports.handler = async (event) => {
+  const headers = {
+    "Access-Control-Allow-Origin": "https://www.wishmos.com",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  };
+
   try {
     const { data, error } = await supabase
       .from("categories")
@@ -18,11 +24,12 @@ exports.handler = async (event) => {
     if (error) {
       return {
         statusCode: 500,
+        headers,
         body: JSON.stringify({ error: error.message })
       };
     }
 
-    const withUrls = data.map(cat => {
+    const withUrls = (data || []).map(cat => {
       if (!cat.category_image) return cat;
 
       const { data: urlData } = supabase
@@ -38,19 +45,20 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
+      headers,
       body: JSON.stringify(withUrls)
     };
 
   } catch (err) {
     return {
       statusCode: 500,
+      headers,
       body: JSON.stringify({ error: err.message })
     };
   }
 };
 
-
-// exports.handler = async (event) => {
+ 
 //   try {
 
 //     const { data, error } = await supabase
