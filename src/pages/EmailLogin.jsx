@@ -28,50 +28,50 @@ const EmailLogin = () => {
     const [loading, setLoading] = useState(false);
 
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError("");
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   setError("");
 
-    try {
-      // ✅ Supabase login
-      setLoading(true);
-      const { data, error: loginError } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+  //   try {
+  //     // ✅ Supabase login
+  //     setLoading(true);
+  //     const { data, error: loginError } = await supabase.auth.signInWithPassword({
+  //       email,
+  //       password,
+  //     });
 
-      if (loginError) {
-        setLoading(false);
-        // If user not found → redirect to registration
-        if (loginError.message.includes("Invalid login credentials")) {
-          //navigate("/EmailRegistration");
-          setCreateAccountButton(true);
-          //setError("Invalid email or password.");
-          setError("Incorrenct email or password.");
-          setShowForgot(true); //added
-          return;
-        }
-        setError(getErrorMessage(loginError.message));
-        return;
-      }
+  //     if (loginError) {
+  //       setLoading(false);
+  //       // If user not found → redirect to registration
+  //       if (loginError.message.includes("Invalid login credentials")) {
+  //         //navigate("/EmailRegistration");
+  //         setCreateAccountButton(true);
+  //         //setError("Invalid email or password.");
+  //         setError("Incorrenct email or password.");
+  //         setShowForgot(true); //added
+  //         return;
+  //       }
+  //       setError(getErrorMessage(loginError.message));
+  //       return;
+  //     }
      
-      setLoading(false);
+  //     setLoading(false);
 
-      if (data?.user) { dispatch(setUser(data.user));
-         // redirect back or default to /account
-          const redirectTo = location.state?.from?.pathname || "/Account";
-           navigate(redirectTo, { replace: true }); 
-          } 
-      // ✅ Successful login → redirect
-      // if (data?.user) {
-      //   navigate("/Account", { replace: true });
-      // }
-    } catch (err) {
-      setLoading(false);
-      setError(getErrorMessage(err.message));
-    }
-    setLoading(false);
-  };
+  //     if (data?.user) { dispatch(setUser(data.user));
+  //        // redirect back or default to /account
+  //         const redirectTo = location.state?.from?.pathname || "/Account";
+  //          navigate(redirectTo, { replace: true }); 
+  //         } 
+  //     // ✅ Successful login → redirect
+  //     // if (data?.user) {
+  //     //   navigate("/Account", { replace: true });
+  //     // }
+  //   } catch (err) {
+  //     setLoading(false);
+  //     setError(getErrorMessage(err.message));
+  //   }
+  //   setLoading(false);
+  // };
 
 
   // const handleForgotPassword = async () => {
@@ -90,6 +90,37 @@ const EmailLogin = () => {
   //   }
   // };
   
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setError("");
+  setLoading(true);
+
+  try {
+    const response = await fetch(`${API_URL}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      setError(getErrorMessage(result.error));
+      setLoading(false);
+      return;
+    }
+
+    if (result.user) {
+      dispatch(setUser(result.user));
+      const redirectTo = location.state?.from?.pathname || "/Account";
+      navigate(redirectTo, { replace: true });
+    }
+  } catch (err) {
+    setError(getErrorMessage(err.message));
+  } finally {
+    setLoading(false);
+  }
+};
 
 
   return (

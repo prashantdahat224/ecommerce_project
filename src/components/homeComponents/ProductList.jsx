@@ -1,6 +1,6 @@
  import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard";
-
+import { API_URL } from "../../config/api";
 const PAGE_SIZE = 30;
 
 export default function ProductList() {
@@ -22,7 +22,7 @@ export default function ProductList() {
 
     try {
       const res = await fetch(
-        `/.netlify/functions/products?from=${from}&to=${to}`
+        `${API_URL}/products?from=${from}&to=${to}`
       );
 
       const data = await res.json();

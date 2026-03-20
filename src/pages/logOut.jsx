@@ -16,19 +16,38 @@ const LogoutPage = () => {
    const dispatch = useDispatch();
 
 
-    const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    //dispatch(clearUser())
-    if (error) {
-      console.error("Logout error:", error.message);
-    } else {
-      // Redirect to login page after successful logout
-      navigate("/EmailLogin");
+  //   const handleLogout = async () => {
+  //   const { error } = await supabase.auth.signOut();
+  //   //dispatch(clearUser())
+  //   if (error) {
+  //     console.error("Logout error:", error.message);
+  //   } else {
+  //     // Redirect to login page after successful logout
+  //     navigate("/EmailLogin");
      
-    dispatch(clearUser());//added
-    dispatch(clearUserData());//added
-    }
-  };
+  //   dispatch(clearUser());//added
+  //   dispatch(clearUserData());//added
+  //   }
+  // };
+
+
+  const handleLogout = async () => {
+  const response = await fetch(`${API_URL}/logout`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  const result = await response.json();
+
+  if (result.error) {
+    console.error("Logout error:", result.error);
+  } else {
+    navigate("/EmailLogin");
+    dispatch(clearUser());
+    dispatch(clearUserData());
+  }
+};
+
 
   const handleCancel = () => {
     navigate(-1); // Go back to previous page

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import icon from "../../assets/downloade_categories_icon_default.png";
 import LazyImage from "../placeHolder/lazyImage";
 import CategoryBarSkeleton from "../placeHolder/CategoryBarPlaceholder";
+import { API_URL } from "../../config/api";
 
 function CategoryBar({ cat_id, onChange }) {
   const [categories, setCategories] = useState([]);
@@ -14,7 +15,7 @@ function CategoryBar({ cat_id, onChange }) {
       setLoading(true);
 
       try {
-        const res = await fetch("/.netlify/functions/categories");
+        const res = await fetch(`${API_URL}/categories`);
         const data = await res.json();
 
         if (!res.ok || !Array.isArray(data)) {

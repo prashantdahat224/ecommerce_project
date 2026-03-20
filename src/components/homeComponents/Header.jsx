@@ -1,5 +1,5 @@
 import React from "react";
-//import logo from "../../assets/logo.png";       // App logo PNG
+import logo from "../../assets/logo.png";       // App logo PNG
 //import searchIcon from "../../assets/icons_downloaded_heart_default.png"; // Action icon PNG
 import searchIcon from "../../assets/icons_downloaded_heart_clicked.png"; // Action icon PNG
 //import cartIcon from "../../assets/icons_downloaded_cart_default.png";     // Action icon PNG
@@ -15,16 +15,16 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white text-black">
-      <div className="flex items-center justify-between h-14 px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between h-14 pr-4 sm:px-6 lg:px-8">
         
         {/* Left: Logo */}
-        <div className="flex-shrink-0">
-          {/* <img
+        <div className=" ">
+          <img
            
             src={logo}
             alt="App Logo"
-            className="h-10 w-auto sm:h-12 object-contain"
-          /> */}
+            className="h-40 w-auto sm:h-52 object-cover scale-125  "
+          />
         </div>
 
         {/* Right: Action Icons */}

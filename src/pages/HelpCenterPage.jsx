@@ -19,27 +19,52 @@ const HelpCenterPage = () => {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent( message)}`;
  
   
-     useEffect(() => {
-    const fetchAdminNumber = async () => {
-        setLoading(true);
-      const { data, error } = await supabase
-        .from("admin_details")
-        .select("phone_number")
-        .eq("role", "admin_priority_1")
-        .single();
+  //    useEffect(() => {
 
-      if (error) {
-        setLoading(false);
-        console.error("Error fetching admin number:", error);
-      } else {
-         setLoading(false);
-        setPhoneNumber(data.number);
-      }
-      setLoading(false);
-    };
 
-    fetchAdminNumber();
-  }, []);
+  //   const fetchAdminNumber = async () => {
+  //       setLoading(true);
+  //     const { data, error } = await supabase
+  //       .from("admin_details")
+  //       .select("phone_number")
+  //       .eq("role", "admin_priority_1")
+  //       .single();
+
+  //     if (error) {
+  //       setLoading(false);
+  //       console.error("Error fetching admin number:", error);
+  //     } else {
+  //        setLoading(false);
+  //       setPhoneNumber(data.number);
+  //     }
+  //     setLoading(false);
+  //   };
+
+  //   fetchAdminNumber();
+  // }, []);
+
+  useEffect(() => {
+  const fetchAdminNumber = async () => {
+    setLoading(true);
+
+    const response = await fetch(`${API_URL}/help-center`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const result = await response.json();
+
+    if (result.error) {
+      console.error("Error fetching admin number:", result.error);
+    } else {
+      setPhoneNumber(result.phoneNumber);
+    }
+
+    setLoading(false);
+  };
+
+  fetchAdminNumber();
+}, []);
 
   return (
 

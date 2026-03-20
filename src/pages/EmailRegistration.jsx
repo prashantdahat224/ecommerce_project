@@ -27,63 +27,97 @@ const EmailRegistration = () => {
    const [loading, setLoading] = useState(false);
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setError("");
       
-    setLoading(true);
-    try {
-      // ✅ Create user in Supabase Auth
-      const { data, error: signUpError } = await supabase.auth.signUp({
-        email,
-        password,
-      });
+  //   setLoading(true);
+  //   try {
+  //     // ✅ Create user in Supabase Auth
+  //     const { data, error: signUpError } = await supabase.auth.signUp({
+  //       email,
+  //       password,
+  //     });
 
-      if (signUpError) {
-        setLoading(false);
-        setError(getErrorMessage(signUpError.message));
-        return;
+  //     if (signUpError) {
+  //       setLoading(false);
+  //       setError(getErrorMessage(signUpError.message));
+  //       return;
 
-      }
+  //     }
      
 
 
-      const user = data?.user;
-      if (user) {
-        // ✅ Save user info in Supabase "users" table
-        const { error: insertError } = await supabase
-          .from("users")
-          .insert([
-            {
-              id: user.id,          // Supabase user id
-              email: user.email,
-              created_date: new Date(),
-            },
-          ]);
+  //     const user = data?.user;
+  //     if (user) {
+  //       // ✅ Save user info in Supabase "users" table
+  //       const { error: insertError } = await supabase
+  //         .from("users")
+  //         .insert([
+  //           {
+  //             id: user.id,          // Supabase user id
+  //             email: user.email,
+  //             created_date: new Date(),
+  //           },
+  //         ]);
 
-        if (insertError) {
-                  setLoading(false);
-          console.error("Error saving user:", insertError);
-        }
+  //       if (insertError) {
+  //                 setLoading(false);
+  //         console.error("Error saving user:", insertError);
+  //       }
 
-         setLoading(false);
+  //        setLoading(false);
 
-        if (data?.user) { dispatch(setUser(data.user)); 
-          // Redirect back to previous page or home
-           const redirectTo = location.state?.from?.pathname || "/Account"; 
-           navigate(redirectTo, { replace: true });
-           }
+  //       if (data?.user) { dispatch(setUser(data.user)); 
+  //         // Redirect back to previous page or home
+  //          const redirectTo = location.state?.from?.pathname || "/Account"; 
+  //          navigate(redirectTo, { replace: true });
+  //          }
 
-        // ✅ Redirect to dashboard or login
-        //navigate("/Account", { replace: true });
-      }
+  //       // ✅ Redirect to dashboard or login
+  //       //navigate("/Account", { replace: true });
+  //     }
        
-    } catch (err) {
-       setLoading(false);
-      setError(getErrorMessage(err.message));
+  //   } catch (err) {
+  //      setLoading(false);
+  //     setError(getErrorMessage(err.message));
+  //   }
+  //   setLoading(false);
+  // };
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
+  setLoading(true);
+
+  try {
+    const response = await fetch(`${API_URL}/register-user`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      setError(getErrorMessage(result.error));
+      setLoading(false);
+      return;
     }
+
+    if (result.user) {
+      dispatch(setUser(result.user));
+      const redirectTo = location.state?.from?.pathname || "/Account";
+      navigate(redirectTo, { replace: true });
+    }
+  } catch (err) {
+    setError(getErrorMessage(err.message));
+  } finally {
     setLoading(false);
-  };
+  }
+};
+
+
 
   const handleGoToLogin = () => { 
     // preserve the "from" state if available 
@@ -183,6 +217,7 @@ const EmailRegistration = () => {
 
           <button
             type="submit"
+            disabled={loading}
             className="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             Continue

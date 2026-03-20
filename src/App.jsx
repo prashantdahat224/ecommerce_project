@@ -10,6 +10,7 @@ import { setUser, clearUser } from "./redux/authSlice";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminRoute from "./routes/AdminRoute";
 
+import { API_URL } from "./config/api";
 
 
 import Home from "./pages/Home";
@@ -75,57 +76,43 @@ function App() {
 
       
       /////////////////
-  //     useEffect(() => {
-  //   // Get current session
-  //   supabase.auth.getSession().then(({ data }) => {
-  //     dispatch(setUser(data?.session?.user || null));
-  //   });
+////////////////////
 
-  //   // Listen auth changes
-  //   const { data: listener } = supabase.auth.onAuthStateChange(
-  //     (_event, session) => {
-  //       if (session?.user) {
-  //         dispatch(setUser(session.user));
-  //          dispatch(fetchWishlist(session.user.id)); //added
-  //       } else {
-  //         dispatch(clearUser());
-  //       }
-  //     }
-  //   );
+ 
 
-  //   return () => listener.subscription.unsubscribe();
-  // }, []);
-        useEffect(() => {
+
+useEffect(() => {
   let mounted = true;
 
-  supabase.auth.getSession().then(({ data }) => {
-    if (!mounted) return;
+  // ✅ Check session via backend
+  const token = localStorage.getItem("access_token");
+  if (token) {
+    fetch(`${API_URL}/session-check`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (!mounted) return;
 
-    dispatch(setUser(data?.session?.user || null));
+        dispatch(setUser(result?.user || null));
 
-    if (data?.session?.user) {
-      dispatch(fetchWishlist(data.session.user.id));
-    }
-  });
+        if (result?.user) {
+          dispatch(fetchWishlist(result.user.id));
+        }
+      })
+      .catch(() => {
+        if (mounted) dispatch(clearUser());
+      });
+  } else {
+    dispatch(clearUser());
+  }
 
-  const { data: listener } = supabase.auth.onAuthStateChange(
-    (_event, session) => {
-      if (!mounted) return;
-
-      if (session?.user) {
-        dispatch(setUser(session.user));
-        dispatch(fetchWishlist(session.user.id));
-      } else {
-        dispatch(clearUser());
-      }
-    }
-  );
-
+  // ✅ Cleanup
   return () => {
     mounted = false;
-    listener.subscription.unsubscribe();
   };
 }, []);
+
 
       /////////////////
 

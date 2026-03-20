@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabaseClient";
 import ProductCard from "../ProductCard";
+import { API_URL } from "../../config/api";
  
 
 
@@ -29,7 +30,7 @@ export default function CategoryProductList({categoryId}) {
 
   try {
     const res = await fetch(
-      `/.netlify/functions/category-products?categoryId=${categoryId}&page=${nextPage}&size=${PAGE_SIZE}`
+      `${API_URL}/category-products?categoryId=${categoryId}&page=${nextPage}&size=${PAGE_SIZE}`
     );
 
     const data = await res.json();

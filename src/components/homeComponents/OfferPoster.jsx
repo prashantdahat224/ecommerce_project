@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import LazyImage from "../placeHolder/lazyImage";
 import { useNavigate } from "react-router-dom";
 import OfferPosterPlcehoder from "../placeHolder/OfferPosterPlaceholder";
-
+import { API_URL } from "../../config/api";
 const OfferPoster = () => {
   const [offers, setOffers] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -14,7 +14,7 @@ const OfferPoster = () => {
     const fetchOffers = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/.netlify/functions/get-offers");
+        const res = await fetch(`${API_URL}/get-offers`);
         const data = await res.json();
        // console.log("Offers response:", data);
         setOffers(Array.isArray(data) ? data : []);// setOffers(data || []);

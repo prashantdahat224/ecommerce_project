@@ -1,4 +1,4 @@
-// amplify/functions/api/handler.js
+//  /functions/api/handler.js
 
 const addToCartTwo = require("./routes/add-to-cart-two");
 const addToCart = require("./routes/add-to-cart");
@@ -23,6 +23,16 @@ const products = require("./routes/products");
 const searchProducts = require("./routes/search-products");
 const searchSuggestions = require("./routes/search-suggestions");
 const trendingKeywords = require("./routes/trending-keywords");
+const register = require("./routes/register-user");
+const login = require("./routes/login-user");
+const session = require("./routes/session-check");
+const getImagePath = require("./routes/get-image-path");
+const editProfile = require("./routes/edit-profile-new");
+const getProfile = require("./routes/get-profile-new");
+const helpCenter = require("./routes/help-center");
+const logout = require("./routes/logout");
+const productCart = require("./routes/product-cart-new");
+const productWishlist = require("./routes/product-wishlist-new");
 
 exports.handler = async (event) => {
   const path = event.rawPath || event.path;
@@ -57,6 +67,17 @@ exports.handler = async (event) => {
     "/search-products": searchProducts,
     "/search-suggestions": searchSuggestions,
     "/trending-keywords": trendingKeywords,
+      "/register-user": register,   // ✅ new route
+        "/login": login,   // ✅ new login route
+          "/session-check": session,    
+          "/get-image-path": getImagePath,
+          "/edit-profile-new": editProfile,
+          "/get-profile-new": getProfile,
+            "/help-center": helpCenter,
+              "/logout": logout,
+                "/product-cart": productCart,
+                  "/product-wishlist-new": productWishlist,
+      
     "/": homeIndex,
   };
 

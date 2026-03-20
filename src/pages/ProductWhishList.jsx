@@ -31,87 +31,139 @@ export default function ProductWhishList() {
    
   }, [userID]);
 
-  async function fetchCartItems() {
+  // async function fetchCartItems() {
      
-    setLoading(true);
-    const { data, error } = await supabase
-      .from("wish_list_products")
-      .select("id,user_id, products(id,name,currency, price, product_image,product_code,about)")
-      .eq("user_id", userID);
+  //   setLoading(true);
+  //   const { data, error } = await supabase
+  //     .from("wish_list_products")
+  //     .select("id,user_id, products(id,name,currency, price, product_image,product_code,about)")
+  //     .eq("user_id", userID);
 
-    if (error) {
-        console.error(error);
-         setLoading(false);}
-    else {
+  //   if (error) {
+  //       console.error(error);
+  //        setLoading(false);}
+  //   else {
          
-        /////////////////////////////
-          const withUrls = data.map(cat => {
-                let publicUrl = null;
-                if (cat.products.product_image) {
-                  const { data: urlData } = supabase
-                    .storage
-                    .from("products")
-                    .getPublicUrl(cat.products.product_image);
-                  publicUrl = urlData.publicUrl;
-                 // console.log(publicUrl);
-                 setLoading(false);
-                }
-                return {
-                  ...cat,
-                      products:{
-                        ...cat.products,
-                             product_image_url: publicUrl || ""
-                      }
+  //       /////////////////////////////
+  //         const withUrls = data.map(cat => {
+  //               let publicUrl = null;
+  //               if (cat.products.product_image) {
+  //                 const { data: urlData } = supabase
+  //                   .storage
+  //                   .from("products")
+  //                   .getPublicUrl(cat.products.product_image);
+  //                 publicUrl = urlData.publicUrl;
+  //                // console.log(publicUrl);
+  //                setLoading(false);
+  //               }
+  //               return {
+  //                 ...cat,
+  //                     products:{
+  //                       ...cat.products,
+  //                            product_image_url: publicUrl || ""
+  //                     }
                     
                    
-                };
-               // console.log(publicUrl)
-              });
+  //               };
+  //              // console.log(publicUrl)
+  //             });
 
-              setLoading(false);
-              setCartItems(withUrls);
-              setCount(data?.length);
+  //             setLoading(false);
+  //             setCartItems(withUrls);
+  //             setCount(data?.length);
          
  
-        /////////////////////////////
+  //       /////////////////////////////
 
 
 
 
 
-    //   const formatted = data.map((c) => ({
-    //     id: c.id,
-    //     product_id: c.product_id,
-    //     name: c.products.name,
-    //     price: c.products.price,
-    //     image_url: c.products.image_url,
-    //   }));
-    //   setCartItems(formatted);
+  //   //   const formatted = data.map((c) => ({
+  //   //     id: c.id,
+  //   //     product_id: c.product_id,
+  //   //     name: c.products.name,
+  //   //     price: c.products.price,
+  //   //     image_url: c.products.image_url,
+  //   //   }));
+  //   //   setCartItems(formatted);
 
 
-    }
-    setLoading(false);
-  }
+  //   }
+  //   setLoading(false);
+  // }
 
-  async function removeItem(wish_list_Id) {
-    setLoading(true);
-    const { error } = await supabase
-      .from("wish_list_products")
-      .delete()
-      .eq("id", wish_list_Id);
+  // async function removeItem(wish_list_Id) {
+  //   setLoading(true);
+  //   const { error } = await supabase
+  //     .from("wish_list_products")
+  //     .delete()
+  //     .eq("id", wish_list_Id);
 
-    if (error){ console.error(error);
-        setLoading(false);
-    }
-    else {
-      const updatedCartItems =cartItems?.filter((item) => item.id !== wish_list_Id );
-      setCartItems(updatedCartItems)
-      setCount(updatedCartItems?.length || 0)
-    setLoading(false);
-  }
-  }
+  //   if (error){ console.error(error);
+  //       setLoading(false);
+  //   }
+  //   else {
+  //     const updatedCartItems =cartItems?.filter((item) => item.id !== wish_list_Id );
+  //     setCartItems(updatedCartItems)
+  //     setCount(updatedCartItems?.length || 0)
+  //   setLoading(false);
+  // }
+  // }
     
-     
+     async function fetchCartItems() {
+  setLoading(true);
+
+  const response = await fetch(`${API_URL}/product-wishlist-new`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId, action: "fetch" }),
+  });
+
+  const result = await response.json();
+
+  if (result.error) {
+    console.error(result.error);
+    setLoading(false);
+  } else {
+    const withUrls = result.wishListItems.map(cat => {
+      return {
+        ...cat,
+        products: {
+          ...cat.products,
+          product_image_url: cat.products.product_image_url || ""
+        }
+      };
+    });
+
+    setCartItems(withUrls);
+    setCount(result.count);
+    setLoading(false);
+  }
+}
+
+async function removeItem(wish_list_Id) {
+  setLoading(true);
+
+  const response = await fetch(`${API_URL}/product-wishlist-new`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId, action: "remove", wishListId: wish_list_Id }),
+  });
+
+  const result = await response.json();
+
+  if (result.error) {
+    console.error(result.error);
+    setLoading(false);
+  } else {
+    const updatedCartItems = cartItems.filter((item) => item.id !== wish_list_Id);
+    setCartItems(updatedCartItems);
+    setCount(updatedCartItems?.length || 0);
+    setLoading(false);
+  }
+}
+
 
   return (
      <div >

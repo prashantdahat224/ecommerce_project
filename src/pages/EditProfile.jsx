@@ -33,38 +33,69 @@ const EditProfile = () => {
     
 
 
-  const loadProfile = async () => {
-    setLoading(true);
+  // const loadProfile = async () => {
+  //   setLoading(true);
 
-    // 1️⃣ Use Redux if available
-    if (reduxUserData?.name && reduxUserData?.number) {
-      setName(reduxUserData.name);
-      setNumber(reduxUserData.number);
-      setLoading(false);
-      return;
-    }
+  //   // 1️⃣ Use Redux if available
+  //   if (reduxUserData?.name && reduxUserData?.number) {
+  //     setName(reduxUserData.name);
+  //     setNumber(reduxUserData.number);
+  //     setLoading(false);
+  //     return;
+  //   }
 
-    // 2️⃣ Else fetch from Supabase
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("name, number")
-      .eq("user_id", authUser.id)
-      .single();
+  //   // 2️⃣ Else fetch from Supabase
+  //   const { data, error } = await supabase
+  //     .from("profiles")
+  //     .select("name, number")
+  //     .eq("user_id", authUser.id)
+  //     .single();
 
-    if (!error && data) {
-      setName(data.name || "");
-      setNumber(data.number || "");
+  //   if (!error && data) {
+  //     setName(data.name || "");
+  //     setNumber(data.number || "");
 
-      dispatch(
-        setUserData({
-          name: data.name,
-          number: data.number,
-        })
-      );
-    }
+  //     dispatch(
+  //       setUserData({
+  //         name: data.name,
+  //         number: data.number,
+  //       })
+  //     );
+  //   }
 
+  //   setLoading(false);
+  // };
+const loadProfile = async () => {
+  setLoading(true);
+
+  if (reduxUserData?.name && reduxUserData?.number) {
+    setName(reduxUserData.name);
+    setNumber(reduxUserData.number);
     setLoading(false);
-  };
+    return;
+  }
+
+  const response = await fetch(`${API_URL}/get-profile`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId: authUser.id }),
+  });
+
+  const result = await response.json();
+
+  if (!result.error && result.name) {
+    setName(result.name);
+    setNumber(result.number);
+
+    dispatch(setUserData({ name: result.name, number: result.number }));
+  }
+
+  setLoading(false);
+};
+
+
+
+
 
   useEffect(() => {
     if (!authUser || hasFetched.current) return;
@@ -84,34 +115,73 @@ const EditProfile = () => {
     );
   }
 
-  const handleSave = async () => {
-    setSaving(true);
+  // const handleSave = async () => {
+  //   setSaving(true);
 
-    if (!name.trim()) {
-      setSaving(false);
-       alert("Name cannot be empty");
-       return; }
-    if (!number.trim()) {
-      setSaving(false); 
-      alert("Number cannot be empty");
-       return; }
-    if (isNaN(number)) { 
-      setSaving(false);
-      alert("Number must be numeric");
-       return; }
+  //   if (!name.trim()) {
+  //     setSaving(false);
+  //      alert("Name cannot be empty");
+  //      return; }
+  //   if (!number.trim()) {
+  //     setSaving(false); 
+  //     alert("Number cannot be empty");
+  //      return; }
+  //   if (isNaN(number)) { 
+  //     setSaving(false);
+  //     alert("Number must be numeric");
+  //      return; }
 
-    const {error}=await supabase
-      .from("users")
-      .update( { name, number} )
-      .eq("id",authUser.id);
+  //   const {error}=await supabase
+  //     .from("users")
+  //     .update( { name, number} )
+  //     .eq("id",authUser.id);
 
-      if(error){console.log("error",error)}
-     // else {setMessage("Details saved successfully")}
-    dispatch(setUserData({ name, number }));
-     setMessage("Details saved successfully");
-      setCartMessage(true);
+  //     if(error){console.log("error",error)}
+  //    // else {setMessage("Details saved successfully")}
+  //   dispatch(setUserData({ name, number }));
+  //    setMessage("Details saved successfully");
+  //     setCartMessage(true);
+  //   setSaving(false);
+  // };
+const handleSave = async () => {
+  setSaving(true);
+
+  if (!name.trim()) {
     setSaving(false);
-  };
+    alert("Name cannot be empty");
+    return;
+  }
+  if (!number.trim()) {
+    setSaving(false);
+    alert("Number cannot be empty");
+    return;
+  }
+  if (isNaN(number)) {
+    setSaving(false);
+    alert("Number must be numeric");
+    return;
+  }
+
+  const response = await fetch(`${API_URL}/edit-profile-new`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId: authUser.id, name, number }),
+  });
+
+  const result = await response.json();
+
+  if (result.error) {
+    console.log("error", result.error);
+  } else {
+    dispatch(setUserData({ name, number }));
+    setMessage("Details saved successfully");
+    setCartMessage(true);
+  }
+
+  setSaving(false);
+};
+
+
 
   return (
 
