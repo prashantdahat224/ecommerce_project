@@ -28,12 +28,14 @@ console.log("EVENT:", event);
       .limit(8);
 
     if (error) {
+        console.error("Supabase error:", error);
       return {
         statusCode: 500,
         headers,
         body: JSON.stringify({ error: error.message })
       };
     }
+        console.log("Categories data:", data);
 
     const withUrls = (data || []).map(cat => {
       if (!cat.category_image) return cat;
