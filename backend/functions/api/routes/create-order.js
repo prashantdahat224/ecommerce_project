@@ -7,8 +7,14 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
+const { requireAuth } = require("../middleware/requireAuth");
+
+
 exports.handler = async (event) => {
   try {
+    const auth = await requireAuth(event);
+  if (auth.error) return { statusCode: auth.status, body: JSON.stringify({ error: auth.error }) };
+
 
     const body = JSON.parse(event.body);
 
@@ -19,7 +25,8 @@ exports.handler = async (event) => {
       .insert([
         {
           order_code: orderCode,
-          user_id: body.user_id,
+          //user_id: body.user_id,
+          user_id: auth.user.id,
           product_id: body.product_id,
           product_name: body.product_name,
           product_image: body.product_image,

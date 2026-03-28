@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom"; //BrowserRouter as Router//added
 
-import { useEffect } from 'react'; //added
+import { useEffect ,useState } from 'react'; //added
 // import { supabase } from './supabaseClient'; //added
 
 import { useDispatch } from "react-redux";
@@ -66,11 +66,13 @@ import { fetchWishlist } from "./redux/wishlistSlice";
 import ImagePage from "./pages/ImagePage";
 //import AdminOption from "./pages/admin_only/AdminOption";
 //import AdminPassword from "./pages/AdminPassword";
+import Loader from "./components/Loader";
 
  
 
  
 function App() {
+  const [loading, setLoading] = useState(true);
 
       const dispatch = useDispatch();
 
@@ -147,6 +149,15 @@ useEffect(() => {
     //   </Route>
            //////////////////////
     
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500); // adjust time
+  }, []);
+
+
+if (loading) return <Loader />;
+
 
   return (
     

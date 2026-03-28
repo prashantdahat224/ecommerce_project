@@ -23,7 +23,7 @@ const Header = () => {
            
             src={logo}
             alt="App Logo"
-            className="h-40 w-auto sm:h-2 object-cover scale-125  "
+            className="h-40 w-auto  object-cover scale-125   "
           />
         </div>
 

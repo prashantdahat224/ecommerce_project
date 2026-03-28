@@ -1,6 +1,8 @@
+// // get user orders (AWS Lambda)
 // get user orders (AWS Lambda)
 
 const { createClient } = require("@supabase/supabase-js");
+const { requireAuth } = require("../middleware/requireAuth");
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -10,16 +12,10 @@ const supabase = createClient(
 exports.handler = async (event) => {
   try {
 
-    let userId =
-      event.queryStringParameters?.id ||
-      new URLSearchParams(event.rawQueryString).get("id");
+    const auth = await requireAuth(event);
+    if (auth.error) return { statusCode: auth.status, body: JSON.stringify({ error: auth.error }) };
 
-    if (!userId) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "User ID required" })
-      };
-    }
+    const userId = auth.user.id; // ✅ from verified token, not query param
 
     const { data, error } = await supabase
       .from("orders")
@@ -64,3 +60,71 @@ exports.handler = async (event) => {
     };
   }
 };
+
+// const { createClient } = require("@supabase/supabase-js");
+
+// const supabase = createClient(
+//   process.env.SUPABASE_URL,
+//   process.env.SUPABASE_SERVICE_ROLE_KEY
+// );
+// const { requireAuth } = require("../middleware/requireAuth");
+// exports.handler = async (event) => {
+//   try {
+
+//     const auth = await requireAuth(event);
+// if (auth.error) return { statusCode: auth.status, body: JSON.stringify({ error: auth.error }) };
+
+//     let userId =
+//       event.queryStringParameters?.id ||
+//       new URLSearchParams(event.rawQueryString).get("id");
+
+//     if (!userId) {
+//       return {
+//         statusCode: 400,
+//         body: JSON.stringify({ error: "User ID required" })
+//       };
+//     }
+
+//     const { data, error } = await supabase
+//       .from("orders")
+//       .select(`
+//         id,
+//         status,
+//         created_at,
+//         product_image,
+//         product_name
+//       `)
+//       .eq("user_id", userId)
+//       .order("created_at", { ascending: false });
+
+//     if (error) throw error;
+
+//     const withUrls = (data || []).map(order => {
+//       let publicUrl = "";
+
+//       if (order.product_image) {
+//         const { data: urlData } = supabase.storage
+//           .from("products")
+//           .getPublicUrl(order.product_image);
+
+//         publicUrl = urlData.publicUrl;
+//       }
+
+//       return {
+//         ...order,
+//         product_image_url: publicUrl
+//       };
+//     });
+
+//     return {
+//       statusCode: 200,
+//       body: JSON.stringify(withUrls)
+//     };
+
+//   } catch (err) {
+//     return {
+//       statusCode: 500,
+//       body: JSON.stringify({ error: err.message })
+//     };
+//   }
+// };

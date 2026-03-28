@@ -1,5 +1,5 @@
 import { useState } from "react"; 
-
+ 
  export default function TestingPage() {
    
  
@@ -10,8 +10,8 @@ import { useState } from "react";
     <div >
       
 
-     <p >hi welcom to admin guide</p>
-           
+      
+ 
            
         
     </div>

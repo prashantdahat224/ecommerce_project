@@ -224,8 +224,8 @@ function Account() {
             className="border rounded-md p-4 bg-gray-200"
             // onClick={() => navigate(`/AdminPassword/${profile.id}`)}
           >
-            <p>Manage users, products, and settings here </p>  
-            <p className="text-xs ">hope you got the permision from @JAYPRAKASH & @PRASHANT</p>
+            <p>Manage users, products, and settings </p>  
+            
           </div>
         </div>
       )
