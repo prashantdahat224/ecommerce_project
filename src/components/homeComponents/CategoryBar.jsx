@@ -1,48 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import icon from "../../assets/downloade_categories_icon_default.png";
 import LazyImage from "../placeHolder/lazyImage";
 import CategoryBarSkeleton from "../placeHolder/CategoryBarPlaceholder";
-import { API_URL } from "../../config/api";
 
-function CategoryBar({ cat_id, onChange }) {
-  const [categories, setCategories] = useState([]);
+function CategoryBar({ categories = [], loading = false, cat_id, onChange }) {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      setLoading(true);
-
-      try {
-        const res = await fetch(`${API_URL}/categories`);
-        const data = await res.json();
-
-        if (!res.ok || !Array.isArray(data)) {
-          throw new Error(data?.error || "Fetch failed");
-        }
-
-        setCategories(data);
-
-      } catch (err) {
-        console.error(err);
-      }
-
-      setLoading(false);
-    };
-
-    fetchCategories();
-  }, []);
 
   const handleClick = (id) => {
+    if (id === "all") {
+      navigate("/CategoriesPage", { replace: true });
+      return;
+    }
     if (!cat_id) {
       navigate(`/CategoryProducts/${id}`, { replace: true });
     } else {
       onChange(id);
-    }
-
-    if (id === "all") {
-      navigate("/CategoriesPage", { replace: true });
     }
   };
 
@@ -80,12 +53,9 @@ function CategoryBar({ cat_id, onChange }) {
                 />
               ) : (
                 <div className="h-14 w-14 bg-gray-200 flex items-center justify-center rounded-full">
-                  <p className="text-gray-500 text-xs text-center">
-                    No Image
-                  </p>
+                  <p className="text-gray-500 text-xs text-center">No Image</p>
                 </div>
               )}
-
               <p className="mt-1 text-xs font-medium text-center">
                 {cat.name}
               </p>

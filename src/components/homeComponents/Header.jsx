@@ -18,12 +18,12 @@ const Header = () => {
       <div className="flex items-center justify-between h-14 pr-4 sm:px-6 lg:px-8">
         
         {/* Left: Logo */}
-        <div className=" ">
+        <div className=" ml-3">
           <img
            
             src={logo}
             alt="App Logo"
-            className="h-40 w-auto  object-cover scale-125   "
+            className="h-15 w-auto  object-cover"
           />
         </div>
 

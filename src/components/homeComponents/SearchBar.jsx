@@ -46,17 +46,17 @@ const SearchBar = ({
         <img
           src={backIcon}
           alt="Back"
-          className="w-10 h-10 cursor-pointer bg-gray-100 rounded-full shadow-md p-1"
+          className="w-10 h-10 cursor-pointer bg-gray-100 rounded-full   p-1"
           onClick={onBack}
         />
       )} 
-   
+    {/*deleted - shadow*/}
       <div className="
         flex items-center 
         flex-1  
-        bg-[#f8f7f5] rounded-full shadow     
+        bg-white rounded-full       
         transition-all duration-300 
-        hover:shadow-lg focus-within:shadow-lg border border-[#bcb8ab] lg:ml-10
+         border border-[#0b5eac] lg:ml-10
       ">
         {/* Search Icon */}
         <img
@@ -76,7 +76,7 @@ const SearchBar = ({
           placeholder="Search products (e.g., luxury, etc.)..."
           className="
             flex-1 px-3 py-2 
-            bg-transparent text-gray-700 placeholder-[#bcb8ab] 
+            bg-transparent text-gray-500 placeholder-gray-400 
             text-base sm:text-base text-gray-700
             focus:outline-none rounded-full 
             transition-all duration-300 

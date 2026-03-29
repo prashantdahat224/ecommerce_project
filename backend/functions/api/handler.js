@@ -33,6 +33,8 @@ const logout = require("./routes/logout");
 const productCart = require("./routes/product-cart-new");
 const productWishlist = require("./routes/product-wishlist-new");
 const wishlist = require("./routes/wishlist-new");
+const homeData = require("./routes/home-data"); //   
+
 
 exports.handler = async (event) => {
   const path = event.rawPath || event.path;
@@ -93,6 +95,7 @@ body: "",
                 "/product-cart": productCart,
                   "/product-wishlist-new": productWishlist,
                       "/wishlist-new": wishlist,
+                       "/home-data": homeData,      
       
     "/": homeIndex,
   };

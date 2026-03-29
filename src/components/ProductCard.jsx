@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProccesMessages from "./ProccesMessages";
 import LoginDialog from "../components/LoginDialog"
+import { API_URL } from "../config/api";
 
 
 
@@ -40,7 +41,7 @@ function ProductCard({ product }) {
      setMessage("Product added to cart");
      setIcon_show_now(true);
     setCartMessage(true);
-    const res = await fetch("/.netlify/functions/add-to-cart", {
+    const res = await fetch(`${API_URL}/add-to-cart`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
