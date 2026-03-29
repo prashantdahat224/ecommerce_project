@@ -76,17 +76,17 @@ function ProductCard({ product }) {
   
 
   return (
-    <div className="w-38 h-64">
+    <div className="w-40 h-64">
       
       {/* <button onClick={()=>setCartMessage(true)}> </button> */}
 
     <Link to={`/product/${product.id}`}>
-    <div className="w-38 h-63 rounded-xl border border-neutral-200 bg-white overflow-hidden lg:max-w-[190px]">
+    <div className="w-40 h-63 rounded-xl border border-neutral-200 bg-white overflow-hidden lg:max-w-[190px]">
       
     
       
       {/* IMAGE */}
-      <div className="relative w-38 h-45 bg-neutral-100">
+      <div className="relative w-40 h-45 bg-neutral-100">
         {imageUrl? (( <LazyImage
           src={imageUrl}
           alt={product.name}
