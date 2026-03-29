@@ -33,9 +33,9 @@ function Home() {
   }, []);
 
   return (
-    <div className="bg-white min-h-screen pb-20 lg:mx-50">
+    <div className="bg-white min-h-screen pb-20  ">
 
-      <div className="sticky top-0">
+      <div className="sticky top-0 z-50">
         <Header />
       </div>
 
