@@ -54,7 +54,7 @@ export default function ProductList() {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-4">
+    <section className="max-w-7xl mx-auto px-2 w-full">
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {products.map((product) => (
