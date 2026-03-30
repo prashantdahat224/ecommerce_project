@@ -63,7 +63,7 @@ const [products2, setProducts2] = useState([]);
   };
 
   /* -------------------------------
-     Final search (Netlify)
+     Final search  
   -------------------------------- */
   const handleSearch = async (keyword, pageNumber = 0) => {
     keyword = keyword.toLowerCase();
@@ -130,7 +130,7 @@ const [products2, setProducts2] = useState([]);
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleSearch(query);
               }}
-              placeholder="Search products or about it..."
+              placeholder="Search your wish..."
               className="flex-1 px-3 py-2 bg-transparent focus:outline-none rounded-full  
               placeholder-gray-500 "
             />

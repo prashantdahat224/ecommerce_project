@@ -30,12 +30,12 @@ const Header = () => {
         {/* Right: Action Icons */}
         <div className="flex items-center space-x-4">
           <button
-            onClick={()=>navigate("/ProductWhishList", { replace: true })}
+            onClick={()=>navigate("/ProductWhishList")} //, { replace: true }
             className="p-2 rounded-md hover:bg-gray-100 transition">
             <img src={searchIcon} alt="Search" className="h-6 w-6 sm:h-7 sm:w-7" />
           </button>
           <button 
-          onClick={()=>navigate("/ProductCartNew", { replace: true })}
+          onClick={()=>navigate("/ProductCartNew")}//, { replace: true }
           className="p-2 rounded-md hover:bg-gray-100 transition">
             <img src={cartIcon} alt="Cart" className="h-6 w-6 sm:h-7 sm:w-7" />
           </button>

@@ -34,6 +34,8 @@ const productCart = require("./routes/product-cart-new");
 const productWishlist = require("./routes/product-wishlist-new");
 const wishlist = require("./routes/wishlist-new");
 const homeData = require("./routes/home-data"); //   
+const brand = require("./routes/brands"); //   
+const brandsProduct = require("./routes/brand-products"); //   
 
 
 exports.handler = async (event) => {
@@ -96,6 +98,8 @@ body: "",
                   "/product-wishlist-new": productWishlist,
                       "/wishlist-new": wishlist,
                        "/home-data": homeData,      
+                       "/brands": brand,      
+                       "/brand-products": brandsProduct,      
       
     "/": homeIndex,
   };

@@ -54,3 +54,6 @@ backend.zip
 # Coverage / test
 # -----------------------
 coverage/
+
+local-server.cjs
+testing_data_just_for_testing/

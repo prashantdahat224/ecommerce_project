@@ -296,6 +296,18 @@ dispatch(toggleWishlist({ userId: user.id, productId: id }))
   {/* Product Info */}
 
       <div className="px-4 space-y-1 mt-4">
+
+  {product.brand_name &&(<div className="flex items-center gap-2">
+              <h1 
+              onClick={()=> navigate(`/BrandsProducts/${product.brand_id}`, { replace: true })}
+                className="  font-bold">
+                {product.brand_name || " " }
+                
+              </h1>
+                 <h1 onClick={()=> navigate(`/BrandsProducts/${product.brand_id}`, { replace: true })}
+                  className=" font-semibold text-sm text-blue-500">explore more similar</h1>
+                 </div>)}
+
         <h1 className="text-base font-semibold tracking-wide">{product.name || ""}</h1>
         <p className="text-xs uppercase tracking-widest text-gray-400">
           {product.about || "nike and jordan"}
@@ -305,6 +317,25 @@ dispatch(toggleWishlist({ userId: user.id, productId: id }))
           {product.price || "price not available"}
         </p>
         <p className="text-sm text-green-600">{product.stock || " "}</p>
+
+
+             {(product.store_address || product.store_contact) && (
+              
+              <div>
+               <hr className="mt-3 border border-gray-200 " />
+
+              <p className=" mt-3 text-lg font-semibold text-black">Store details</p>
+              <div className="flex items-center gap-2">
+              <p className="  font-semibold  text-sm  ">Address</p>
+              <p className="   text-sm  ">{product.store_address || "Not specified"}</p>
+              </div>
+              <div className="flex items-center gap-2">
+              <p className="  font-semibold  text-sm  ">Contact</p>
+              <p className="   text-sm  ">{product.store_contact || "Not specified"}</p>
+              </div>
+              </div>
+            )}
+
 
         {product.description && (<div className="text-sm text-gray-700 leading-relaxed break-words border border-gray-300 rounded-2xl p-4 mt-6">
           <p className="font-bold text-black">Product details</p>
