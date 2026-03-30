@@ -17,7 +17,7 @@ import Home from "./pages/Home";
 import Account from "./pages/Account";
 import EmailLogin from "./pages/EmailLogin";
 import EmailRegistration from "./pages/EmailRegistration";
-//import TestingPage from "./pages/TestingPage";
+import TestingPage from "./pages/TestingPage";
 import EditProfile from "./pages/EditProfile";
 //import ProductPostUpload from "./pages/admin_only/ProductPostUpload";
                                                
@@ -167,7 +167,7 @@ if (loading) return <Loader />;
       <Route path="/home/*" element={<Home />} /> 
      <Route path="/" element={<Home />} /> 
         <Route path="/Search" element={<Search />} /> 
-        {/* <Route path="/testingPage" element={<TestingPage />} />  */}
+        <Route path="/testingPage" element={<TestingPage />} /> 
 
       <Route path="/product/:id" element={<ProductDetails />} >
           

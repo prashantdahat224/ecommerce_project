@@ -109,7 +109,7 @@ function ProductCard({ product }) {
         </h3>
 
         {/* CATEGORY */}
-        <p className="text-[11px] uppercase tracking-widest text-neutral-400">
+        <p className="text-[11px] uppercase tracking-widest text-gray-400">
           {product.about || ""}
         </p>
 
