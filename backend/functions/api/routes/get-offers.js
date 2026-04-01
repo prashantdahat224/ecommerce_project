@@ -35,6 +35,7 @@ exports.handler = async (event) => {
       statusCode: 200,
       headers: {
         "Content-Type": "application/json",
+        "Cache-Control": "public, max-age=60"  // ✅ add here//new added cache control header
       },
       body: JSON.stringify(offersWithUrls),
     };

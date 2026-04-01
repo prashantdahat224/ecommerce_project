@@ -15,6 +15,8 @@ exports.handler = async (event) => {
     "Access-Control-Allow-Origin": "https://www.wishmos.com",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Cache-Control": "public, max-age=60"  // ✅ add here//new added cache control header
+
   };
 
 //   console.log("ENV URL:", process.env.SUPABASE_URL);

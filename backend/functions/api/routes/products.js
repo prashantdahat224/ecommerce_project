@@ -23,7 +23,12 @@ exports.handler = async (event) => {
     if (error) {
       return {
         statusCode: 500,
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Cache-Control": "public, max-age=60"  // ✅ add here//new added cache control header
+
+
+        },
         body: JSON.stringify({ error: error.message })
       };
     }

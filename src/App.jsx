@@ -169,13 +169,15 @@ if (loading) return <Loader />;
         <Route path="/Search" element={<Search />} /> 
         <Route path="/testingPage" element={<TestingPage />} /> 
 
-      <Route path="/product/:id" element={<ProductDetails />} >
-          
-     </Route>
+      <Route path="/product/:id" element={<ProductDetails />} ></Route>
+      {/* <Route path="/product/:id" element={<ProductDetails />} ></Route> */}
+
 
     <Route path="/image-page" element={<ImagePage />} />
          {/* /:imageUrl */}
-     <Route path="/product/:id" element={<ProductDetails />} ></Route>
+
+
+
      <Route path="/HelpCenterPage" element={<HelpCenterPage />} />
       <Route path="/CategoriesPage" element={<CategoriesPage />} />
       <Route path="/ProductCartNew" element={<ProductCartNew />} />

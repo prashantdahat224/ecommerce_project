@@ -1,8 +1,8 @@
  import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard";
 import { API_URL } from "../../config/api";
-const PAGE_SIZE = 30;
-
+const PAGE_SIZE = 16; //30
+ 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(0);
