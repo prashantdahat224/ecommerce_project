@@ -19,6 +19,8 @@ import EmailLogin from "./pages/EmailLogin";
 import EmailRegistration from "./pages/EmailRegistration";
 import TestingPage from "./pages/TestingPage";
 import EditProfile from "./pages/EditProfile";
+import Customize from "./pages/Customize";
+import CutomizeW from "./pages/Extra/CutomizeW";
 //import ProductPostUpload from "./pages/admin_only/ProductPostUpload";
                                                
 import ProductDetails from "./pages/ProductDetails";
@@ -213,6 +215,8 @@ if (loading) return <Loader />;
       <Route path="/logOutButton" element={<LogOutButton />} />
  
       <Route path="/EditProfile" element={<EditProfile />} />
+      <Route path="/Customize" element={<Customize />} />
+      <Route path="/CustomizeW" element={<CutomizeW />} />
       <Route path="/OrderDetails/:orderId" element={<OrderDetails />} />
       <Route path="/OrderTracking/:orderId" element={<OrderTracking />} />
   

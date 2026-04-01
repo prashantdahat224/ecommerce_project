@@ -76,7 +76,7 @@ const SearchBar = ({
           placeholder="Search products (e.g., luxury, etc.)..."
           className="
             flex-1 px-3 py-2 
-            bg-transparent text-gray-500 placeholder-gray-400 
+            bg-transparent text-gray-500 placeholder-gray-500 
             text-base sm:text-base text-gray-700
             focus:outline-none rounded-full 
             transition-all duration-300 

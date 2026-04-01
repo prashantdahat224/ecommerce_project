@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import icon from "../../assets/downloade_categories_icon_default.png";
+import icon from "../../assets/new_icon_cat.png";
 import LazyImage from "../placeHolder/lazyImage";
 import CategoryBarSkeleton from "../placeHolder/CategoryBarPlaceholder";
 import { API_URL } from "../../config/api";
