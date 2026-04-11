@@ -46,7 +46,7 @@ const BottomNavigation = () => {
         iconClass="w-6 h-6"
       />
       <NavItem
-        to="/CUSTOMIZE"
+        to="/Customizes"
         icon={activeTab === "CUSTOMIZE" ? customize_click : customize_defaultt}
         label="CUSTOMIZE"
         active={activeTab === "CUSTOMIZE"}
