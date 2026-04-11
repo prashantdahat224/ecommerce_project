@@ -4,7 +4,7 @@ import BottomNavigation from "../components/BottomNavigation";
 
 
 
-export default function CustomizeProductPage() {
+export default function Customize() {
 
 
       const navigate = useNavigate();
