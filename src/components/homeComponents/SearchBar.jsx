@@ -56,7 +56,7 @@ const SearchBar = ({
         flex-1  
         bg-white rounded-full       
         transition-all duration-300 
-         border border-[#0b5eac] lg:ml-10
+        ring ring-[#0b5eac] lg:ml-10
       ">
         {/* Search Icon */}
         <img
