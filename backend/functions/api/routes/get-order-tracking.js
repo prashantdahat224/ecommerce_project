@@ -7,8 +7,12 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
+const { requireAuth } = require("../middleware/requireAuth"); //added
+
 exports.handler = async (event) => {
   try {
+    const auth = await requireAuth(event);
+if (auth.error) return { statusCode: auth.status, body: JSON.stringify({ error: auth.error }) };
 
     const orderId = event.queryStringParameters?.orderId;
 

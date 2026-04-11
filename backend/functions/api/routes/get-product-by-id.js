@@ -18,7 +18,9 @@ exports.handler = async (event) => {
         statusCode: 400,
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
+          "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "public, max-age=300"
+          
         },
         body: JSON.stringify({ error: "Product id required" })
       };
@@ -26,7 +28,7 @@ exports.handler = async (event) => {
 
     const { data, error } = await supabase
       .from("products")
-      .select("*")
+      .select("id, name, about, price, currency, description, stock, featured_image, product_image, additional_images,brand_name,brand_id")
       .eq("id", id)
       .single();
 

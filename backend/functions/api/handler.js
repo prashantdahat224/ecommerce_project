@@ -36,6 +36,8 @@ const wishlist = require("./routes/wishlist-new");
 const homeData = require("./routes/home-data"); //   
 const brand = require("./routes/brands"); //   
 const brandsProduct = require("./routes/brand-products"); //   
+const getBrandById = require("./routes/get-brand-by-id");
+
 
 
 exports.handler = async (event) => {
@@ -99,7 +101,8 @@ body: "",
                       "/wishlist-new": wishlist,
                        "/home-data": homeData,      
                        "/brands": brand,      
-                       "/brand-products": brandsProduct,      
+                       "/brand-products": brandsProduct,    
+                       "/get-brand-by-id": getBrandById,  
       
     "/": homeIndex,
   };

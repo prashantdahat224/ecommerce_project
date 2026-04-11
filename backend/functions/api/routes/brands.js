@@ -1,10 +1,6 @@
-// categories.js (AWS Lambda)
-
+// brands.js (AWS Lambda)
 const { createClient } = require("@supabase/supabase-js");
-
-// console.log("Supabase URL:", process.env.SUPABASE_URL); // ✅ log here
-// console.log("Supabase Key:", process.env.SUPABASE_SERVICE_ROLE_KEY ? "Key is set" : "Key is missing");
-
+ 
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -16,9 +12,7 @@ exports.handler = async (event) => {
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   };
-
-//   console.log("ENV URL:", process.env.SUPABASE_URL);
-// console.log("EVENT:", event);
+ 
 
   try {
     const { data, error } = await supabase
@@ -37,16 +31,16 @@ exports.handler = async (event) => {
     }
  
     const withUrls = (data || []).map(cat => {
-      if (!cat.category_image) return cat;
+      if (!cat.brand_image) return cat;
 
       const { data: urlData } = supabase
         .storage
         .from("category-images")
-        .getPublicUrl(cat.category_image);
+        .getPublicUrl(cat.brand_image);
 
       return {
         ...cat,
-        category_image: urlData?.publicUrl || null
+        brand_image: urlData?.publicUrl || null
       };
     });
 
@@ -65,54 +59,4 @@ exports.handler = async (event) => {
   }
 };
 
- 
-//   try {
-
-//     const { data, error } = await supabase
-//       .from("categories")
-//       .select("id,name,category_image")
-//       .order("trending_score", { ascending: false })
-//       .limit(8);
-
-//     if (error) {
-//       return {
-//         statusCode: 500,
-//         headers: {
-//           "Access-Control-Allow-Origin": "*"
-//         },
-//         body: JSON.stringify({ error: error.message })
-//       };
-//     }
-
-//     const withUrls = data.map(cat => {
-//       if (!cat.category_image) return cat;
-
-//       const { data: urlData } = supabase
-//         .storage
-//         .from("category-images")
-//         .getPublicUrl(cat.category_image);
-
-//       return {
-//         ...cat,
-//         category_image: urlData.publicUrl
-//       };
-//     });
-
-//     return {
-//       statusCode: 200,
-//       headers: {
-//         "Access-Control-Allow-Origin": "*"
-//       },
-//       body: JSON.stringify(withUrls)
-//     };
-
-//   } catch (err) {
-//     return {
-//       statusCode: 500,
-//       headers: {
-//         "Access-Control-Allow-Origin": "*"
-//       },
-//       body: JSON.stringify({ error: err.message })
-//     };
-//   }
-// };
+   

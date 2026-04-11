@@ -33,6 +33,7 @@ export default function ProductDetails() {
   const [message, setMessage] = useState("");//added
   const [icon_show_now, setIcon_show_now] = useState(false);//added
 
+  const [brand, setBrand] = useState(null);
 
 
   const { id } = useParams(); // product id from route
@@ -90,9 +91,21 @@ export default function ProductDetails() {
     fetchProduct();
 
   }, [id]);
+  
+  useEffect(() => {
+  if (!product?.brand_id) return;
+
+  fetch(`${API_URL}/get-brand-by-id?id=${product.brand_id}`)
+    .then(res => res.json())
+    .then(data => {
+      if (!data.error) setBrand(data);
+    })
+    .catch(err => console.error("Brand fetch error:", err));
+
+}, [product]);
 
   if (!product) { return <div className="lg:mx-70"><ProductDetailsSkeleton /></div>; }
-
+  
 
   // Collect images: featured first, then additional //
   const images = [product.featured_image_url, ...(product.additional_images_url || [])];
@@ -307,18 +320,21 @@ export default function ProductDetails() {
 
               <div className="flex items-center gap-2">
 
-                {product.brand_image_url && ((<LazyImage
-                  src={product.brand_image_url}
-                  alt={product.name}
+                {brand?.brand_image_url && ((<LazyImage
+                  src={brand.brand_image_url}
+                  alt={product?.name}
                   className="mt-3 w-20 h-20 rounded-full object-cover"
                 />))}
-
+                  
+                {product.brand_name && (<div>
                 <h1 className="  font-bold">
                   {product.brand_name || "not specified"}
-
                 </h1>
+                
                 <h1 onClick={() => navigate(`/BrandsProducts/${product.brand_id}`, { replace: true })}
                   className=" font-semibold text-sm text-blue-500">explore more similar</h1>
+                 </div>)}
+                  
               </div>
 
               <p className="text-xl font-bold mt-4">
