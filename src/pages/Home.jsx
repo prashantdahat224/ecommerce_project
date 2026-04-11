@@ -39,7 +39,7 @@ function Home() {
         <Header />
       </div>
 
-      <div className="sticky top-14 z-50 bg-white px-4 sm:px-6 lg:px-8">
+      <div className="sticky top-14 z-50 bg-white  sm:px-6 lg:px-8">
         <SearchBar onFocus={() => navigate("/Search")} />
       </div>
 

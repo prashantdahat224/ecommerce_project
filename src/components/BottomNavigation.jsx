@@ -30,7 +30,7 @@ const BottomNavigation = () => {
   }, [location]);
 
   return (
-    <nav className="fixed bottom-0 left-0 w-full bg-white shadow-inner py-3 flex justify-around items-center border border-gray-200 ">
+    <nav className="fixed bottom-0 left-0 w-full bg-white shadow-inner py-3 flex justify-around items-center border border-gray-300 ">
       <NavItem
         to="/home"
         icon={activeTab === "HOME" ? HomeIconClicked : HomeIcon}
