@@ -24,7 +24,7 @@ const BottomNavigation = () => {
   useEffect(() => {
     if (location.pathname === "/" || location.pathname === "/home") setActiveTab("HOME");
         else if (location.pathname === "/AskUs") setActiveTab("ASK");
-     else if (location.pathname === "/Customize") setActiveTab("CUSTOMIZE");
+     else if (location.pathname === "/Customizes") setActiveTab("CUSTOMIZE");
     else if (location.pathname === "/Account") setActiveTab("PROFILE");
     else { setActiveTab("");   }
   }, [location]);
