@@ -183,7 +183,7 @@ window.open(
     <div className="mt-2 flex flex-col gap-3">
   <button
     onClick={shareOnWhatsApp}
-    className="border-4 border-green-600 flex items-center justify-center gap-3 hover:bg-gray-200 text-green-600
+    className="border-4 border-[#2fb144] flex items-center justify-center gap-3 hover:bg-gray-200 text-[#2fb144]
     font-semibold py-3.5 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg"
   >
     <img src={icon1} className="h-9 w-9 mr-2" />

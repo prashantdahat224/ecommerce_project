@@ -106,7 +106,7 @@ const HelpCenterPage = () => {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-3 text-green-500 font-semibold py-3 px-6 rounded-xl transition border border-gray-400"
+          className="flex items-center justify-center gap-3 text-[#2fb144] font-semibold py-3 px-6 rounded-xl transition border border-gray-400"
         >
           <img
             src={icon1}
