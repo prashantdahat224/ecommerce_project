@@ -106,6 +106,7 @@ const EmailRegistration = () => {
     }
 
     if (result.user) {
+  localStorage.setItem("access_token", result.session.access_token); // ✅
       dispatch(setUser(result.user));
       const redirectTo = location.state?.from?.pathname || "/Account";
       navigate(redirectTo, { replace: true });

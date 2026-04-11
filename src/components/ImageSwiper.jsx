@@ -47,14 +47,36 @@ export default function ImageSwiper({ images = [], onImageClick }) {
             transform: `translateX(-${current * 100}%)`,
           }}
         >
-          {images.map((img, index) => (
+
+
+
+          {/* {images.map((img, index) => (
             <img
               key={index}
               src={img}
               style={styles.image}
               onClick={() => onImageClick?.(img)}
             />
-          ))}
+          ))} */}
+          {images.map((img, index) => (
+  <div key={index} style={{ width: "100%", height: "300px", flexShrink: 0 }}>
+    {Math.abs(index - current) <= 1 ? (
+      <img
+        src={img}
+        style={styles.image}
+        onClick={() => onImageClick?.(img)}
+      />
+    ) : (
+      <div style={{ width: "100%", height: "300px", background: "#f0f0f0" }} />
+    )}
+  </div>
+))}
+
+  
+
+
+
+
         </div>
 
       </div>

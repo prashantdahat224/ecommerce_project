@@ -89,7 +89,7 @@ const CutomizeW = () => {
             alt="WhatsApp"
             className="w-6 h-6"
           />
-          Ask on WhatsApp
+          tell us on WhatsApp
         </a>
         )}
 

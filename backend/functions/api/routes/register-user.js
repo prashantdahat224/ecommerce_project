@@ -36,10 +36,25 @@ exports.handler = async (event) => {
       };
     }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ user: data.user }),
-    };
+    // return {
+    //   statusCode: 200,
+    //   body: JSON.stringify({ user: data.user }),
+    // };
+    const { data: sessionData } = await supabase.auth.signInWithPassword({
+  email,
+  password,
+});
+
+return {
+  statusCode: 200,
+  body: JSON.stringify({
+    user: data.user,
+    session: sessionData.session,
+  }),
+};
+
+
+
   } catch (err) {
     return {
       statusCode: 500,

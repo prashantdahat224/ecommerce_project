@@ -97,7 +97,7 @@ const handleLogin = async (e) => {
 
   try {
     const response = await fetch(`${API_URL}/login`, {
-      method: "POST",
+       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
@@ -111,6 +111,7 @@ const handleLogin = async (e) => {
     }
 
     if (result.user) {
+  localStorage.setItem("access_token", result.session.access_token); // ✅
       dispatch(setUser(result.user));
       const redirectTo = location.state?.from?.pathname || "/Account";
       navigate(redirectTo, { replace: true });
