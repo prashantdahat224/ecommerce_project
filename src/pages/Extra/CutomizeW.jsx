@@ -18,31 +18,7 @@ const CutomizeW = () => {
   const message = "Hi, Cutomize my product.";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent( message)}`;
  
-  
-  //    useEffect(() => {
-
-
-  //   const fetchAdminNumber = async () => {
-  //       setLoading(true);
-  //     const { data, error } = await supabase
-  //       .from("admin_details")
-  //       .select("phone_number")
-  //       .eq("role", "admin_priority_1")
-  //       .single();
-
-  //     if (error) {
-  //       setLoading(false);
-  //       console.error("Error fetching admin number:", error);
-  //     } else {
-  //        setLoading(false);
-  //       setPhoneNumber(data.number);
-  //     }
-  //     setLoading(false);
-  //   };
-
-  //   fetchAdminNumber();
-  // }, []);
-
+   
   useEffect(() => {
   const fetchAdminNumber = async () => {
     setLoading(true);
@@ -101,7 +77,7 @@ const CutomizeW = () => {
          Let us know your style, and we’ll make it for you!
         </p>
 
-        {((!loading) && (!phoneNumber)) && (
+        {((!loading) && (phoneNumber)) && (
         <a
           href={whatsappUrl}
           target="_blank"

@@ -101,7 +101,7 @@ const HelpCenterPage = () => {
           Our support team is here for you.
         </p>
 
-        {((!loading) && (!phoneNumber)) && (
+        {((!loading) && (phoneNumber)) && (
         <a
           href={whatsappUrl}
           target="_blank"
