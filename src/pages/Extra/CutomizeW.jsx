@@ -1,5 +1,6 @@
 import React from "react";
 import icon1 from "../../assets/icon_whatsapp.png"
+import icon2 from "../../assets/cat.jpg"
 import FullScreenLoader from "../../utils/FullScreenLoader";
 import back from "../../assets/icon_download_back.png";
 import { useNavigate } from "react-router-dom";
@@ -92,10 +93,23 @@ const CutomizeW = () => {
           tell us on WhatsApp
         </a>
         )}
+                  <hr className="border border-gray-200 mx-3 mt-14 mb-2" />
 
-
+<p  >this is the example product of customization,
+   you can customize any product you want.</p>
+       <div className="flex justify-center">
+        
+         
+  <img
+    src={icon2}
+    alt="WhatsApp"
+    className=" w-50"
+  />
+</div>
       </div>
+      
     </div>
+    
      </div >
   );
 };
