@@ -33,7 +33,7 @@ const [products2, setProducts2] = useState([]);
 
 
   /* -------------------------------
-     Autocomplete suggestions (Netlify)
+     Autocomplete suggestions  
   -------------------------------- */
   const handleInputChange = (value) => {
     setQuery(value);
@@ -172,7 +172,7 @@ const [products2, setProducts2] = useState([]);
     {suggestions.map((keyword) => (
       <div
         key={keyword}
-        className="p-1 cursor-pointer hover:bg-gray-100"
+        className="p-2 cursor-pointer hover:bg-gray-100"
         onClick={() => handleSearch(keyword)}
       >
         <div className="flex items-center gap-2 border-b border-gray-300">

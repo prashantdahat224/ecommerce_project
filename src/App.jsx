@@ -102,7 +102,8 @@ useEffect(() => {
         dispatch(setUser(result?.user || null));
 
         if (result?.user) {
-          dispatch(fetchWishlist(result.user.id));
+          //dispatch(fetchWishlist(result.user.id));
+          dispatch(fetchWishlist());
         }
       })
       .catch(() => {

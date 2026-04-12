@@ -291,7 +291,7 @@ export default function ProductDetails() {
                   )}
 
                 </div>
-                <p className="text-gray-500 rounded text-sm">Add to Whish list</p>
+                <p className="text-gray-500 rounded text-sm">Add to Wish list</p>
               </div>
               <div className="flex flex-col items-center justify-center ml-4 ">
                 <div

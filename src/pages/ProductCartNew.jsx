@@ -103,7 +103,9 @@ export default function ProductCartNew() {
   const response = await fetch(`${API_URL}/product-cart-new`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ userId, action: "fetch" }),
+   // body: JSON.stringify({ userId, action: "fetch" }),
+   body: JSON.stringify({ userId: userID, action: "fetch" }),
+
   });
 
   const result = await response.json();
@@ -131,10 +133,14 @@ export default function ProductCartNew() {
 async function removeFromCart(cartId) {
   setLoading(true);
 
-  const response = await fetch(`${API_URL}/product-cart`, {
+  //const response = await fetch(`${API_URL}/product-cart`, {
+  const response = await fetch(`${API_URL}/product-cart-new`, {
+
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ userId, action: "remove", cartId }),
+   // body: JSON.stringify({ userId, action: "remove", cartId }),
+   body: JSON.stringify({ userId: userID, action: "remove", cartId }),
+
   });
 
   const result = await response.json();

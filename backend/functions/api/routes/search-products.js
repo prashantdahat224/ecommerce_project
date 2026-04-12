@@ -38,11 +38,25 @@ exports.handler = async (event) => {
 
     if (error) throw error;
 
-    const products = (data || [])
-      .map(item => item.products)
-      .filter(Boolean)
-      .sort((a, b) => (b.priority_score || 0) - (a.priority_score || 0));
-
+    // const products = (data || [])
+    //   .map(item => item.products)
+    //   .filter(Boolean)
+    //   .sort((a, b) => (b.priority_score || 0) - (a.priority_score || 0));
+const products = (data || [])
+  .map(item => item.products)
+  .filter(Boolean)
+  .sort((a, b) => (b.priority_score || 0) - (a.priority_score || 0))
+  .map(product => {
+    if (!product.product_image) return product;
+    const { data: urlData } = supabase.storage
+      .from("products")
+      .getPublicUrl(product.product_image);
+    return {
+      ...product,
+      product_image: urlData?.publicUrl || null
+    };
+  });
+  
     return {
       statusCode: 200,
       body: JSON.stringify(products),

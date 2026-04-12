@@ -1,27 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// import { supabase } from "../supabaseClient";
 import { API_URL } from "../config/api";
 
-//  export const fetchWishlist = createAsyncThunk(
-//   "wishlist/fetchWishlist",
-//   async (userId) => {
-//     const { data, error } = await supabase
-//       .from("wish_list_products")
-//       .select("product_id")
-//       .eq("user_id", userId);
-
-//     if (error) throw error;
-
-//     return data.map((item) => item.product_id);
-//   }
-// );
 export const fetchWishlist = createAsyncThunk(
   "wishlist/fetchWishlist",
-  async (userId) => {
-    const response = await fetch(`${API_URL}/wishlist`, {
+  async () => {
+    const response = await fetch(`${API_URL}/wishlist-new`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, action: "fetch" }),
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("access_token")}`
+      },
+      body: JSON.stringify({ action: "fetch" }),
     });
 
     const result = await response.json();
@@ -31,44 +20,16 @@ export const fetchWishlist = createAsyncThunk(
   }
 );
 
-//  export const toggleWishlist = createAsyncThunk(
-//   "wishlist/toggleWishlist",
-//   async ({ userId, productId }) => {
-//     const { data: existing, error: fetchError } = await supabase
-//       .from("wish_list_products")
-//       .select("*")
-//       .eq("user_id", userId)
-//       .eq("product_id", productId)
-//       .single();
-
-//     if (fetchError && fetchError.code !== "PGRST116") throw fetchError;
-
-//     if (existing) {
-//       const { error } = await supabase
-//         .from("wish_list_products")
-//         .delete()
-//         .eq("user_id", userId)
-//         .eq("product_id", productId);
-
-//       if (error) throw error;
-//       return { productId, action: "remove" };
-//     } else {
-//       const { error } = await supabase
-//         .from("wish_list_products")
-//         .insert([{ user_id: userId, product_id: productId }]);
-
-//       if (error) throw error;
-//       return { productId, action: "add" };
-//     }
-//   }
-// );
 export const toggleWishlist = createAsyncThunk(
   "wishlist/toggleWishlist",
-  async ({ userId, productId }) => {
-    const response = await fetch(`${API_URL}/wishlist`, {
+  async ({ productId }) => {
+    const response = await fetch(`${API_URL}/wishlist-new`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, productId, action: "toggle" }),
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("access_token")}`
+      },
+      body: JSON.stringify({ productId, action: "toggle" }),
     });
 
     const result = await response.json();
