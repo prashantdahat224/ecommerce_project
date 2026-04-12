@@ -27,7 +27,9 @@ export default function Search() {
   const debounceRef = useRef(null);
   
 const [products2, setProducts2] = useState([]);
-  const [sortType, setSortType] = useState(null);
+  //const [sortType, setSortType] = useState(null);
+  const [sortBy, setSortBy] = useState("");
+
 
 
   /* -------------------------------
