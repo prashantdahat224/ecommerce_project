@@ -217,7 +217,7 @@ function Account() {
      
       
       {/* Admin Panel */}
-      { ( cheked && AdminRole === "admin") && (
+      {/* { ( cheked && AdminRole === "admin") && (
         <div className="mt-10 px-6  mb-20">
            <h3 className="text-lg font-semibold mb-4">Admin Panel </h3>
           <div
@@ -229,7 +229,15 @@ function Account() {
           </div>
         </div>
       )
-      }
+      } */}
+
+        <div className="m-5">
+
+        <p 
+        onClick={() => navigate("/AboutUs")}
+        className="text-black font-medium border border-gray-300 p-2 rounded">About Us</p>
+      </div>
+      
 
 </div>
     <div className="h-26 lg:hidden">

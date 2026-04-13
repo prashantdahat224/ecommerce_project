@@ -21,6 +21,7 @@ import TestingPage from "./pages/TestingPage";
 import EditProfile from "./pages/EditProfile";
 import Customizes from "./pages/Customizes";
 import CutomizeW from "./pages/Extra/CutomizeW";
+import AboutUs from "./pages/AboutUs";
 //import ProductPostUpload from "./pages/admin_only/ProductPostUpload";
                                                
 import ProductDetails from "./pages/ProductDetails";
@@ -218,6 +219,7 @@ if (loading) return <Loader />;
       <Route path="/EditProfile" element={<EditProfile />} />
       <Route path="/Customizes" element={<Customizes />} />
       <Route path="/CustomizeW" element={<CutomizeW />} />
+      <Route path="/AboutUs" element={<AboutUs />} />
       <Route path="/OrderDetails/:orderId" element={<OrderDetails />} />
       <Route path="/OrderTracking/:orderId" element={<OrderTracking />} />
   
