@@ -47,9 +47,9 @@ function Home() {
         <CategoryBar categories={homeData.categories} loading={loadingHome} />
       </div>
 
-      <div>
+      {/* <div>
         <button onClick={()=> navigate("/testingPage")}>testing</button>
-      </div>
+      </div> */}
 
       <div className="mt-2">
         <OfferPoster offers={homeData.offers} loading={loadingHome} />
