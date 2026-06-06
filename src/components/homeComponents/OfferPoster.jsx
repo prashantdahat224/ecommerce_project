@@ -34,12 +34,12 @@ const OfferPoster = ({ offers = [], loading = false }) => {
               onClick={() =>
                 offer.product_id && navigate(`/product/${offer.product_id}`)
               }
-              className="w-full h-40 cursor-pointer"
+              className="w-full h-62 cursor-pointer"
             >
               <LazyImage
                 src={offer.public_url}
                 alt={offer.id || ""}
-                className="w-full h-40 object-cover"
+                className="w-full h-62 object-cover"
               />
             </div>
           </div>

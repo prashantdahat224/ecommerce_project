@@ -1,6 +1,6 @@
 import React from "react";
 import icon1 from "../../assets/icon_whatsapp.png"
-import icon2 from "../../assets/cat.jpg"
+import icon2 from "../../assets/icon_whatsapp.png"
 import FullScreenLoader from "../../utils/FullScreenLoader";
 import back from "../../assets/icon_download_back.png";
 import { useNavigate } from "react-router-dom";

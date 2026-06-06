@@ -53,6 +53,7 @@ import BrandsProducts from "./pages/Extra/BrandsProducts";
 //import AdminSelect from "./pages/admin_only/AdminSelect";
 import HelpCenterPage from "./pages/HelpCenterPage";
 import CategoriesPage from "./pages/CategoriesPage";
+import BrandsPage from "./pages/BrandsPage";
 import OrdersPage from "./pages/OrdersPage";
 import AskUs from "./pages/AskUs";
  
@@ -184,6 +185,7 @@ if (loading) return <Loader />;
 
      <Route path="/HelpCenterPage" element={<HelpCenterPage />} />
       <Route path="/CategoriesPage" element={<CategoriesPage />} />
+      <Route path="/BrandsPage" element={<BrandsPage />} />
       <Route path="/ProductCartNew" element={<ProductCartNew />} />
       <Route path="/ProductWhishList" element={<ProductWhishList />} />
       <Route path="/OrdersPage" element={<OrdersPage />} />

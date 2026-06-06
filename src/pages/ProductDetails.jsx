@@ -321,13 +321,18 @@ export default function ProductDetails() {
               <div className="flex items-center gap-2">
 
                 {brand?.brand_image_url && ((<LazyImage
+
+                  onClick={() =>window.open(product.brand_link, "_blank")}
+                  
                   src={brand.brand_image_url}
                   alt={product?.name}
                   className="mt-3 w-20 h-20 rounded-full object-cover"
                 />))}
                   
                 {product.brand_name && (<div>
-                <h1 className="  font-bold">
+                <h1 
+                onClick={() =>window.open(product.brand_link, "_blank")}
+                  className="  font-bold">
                   {product.brand_name || "not specified"}
                 </h1>
                 

@@ -8,8 +8,8 @@ import HomeIconClicked from "../assets/icons_downloaded_home_clicked.png";
 import AskIcon from "../assets/icons_whatsapp_two_downloaded.png";
 import AskIconClicked from "../assets/icons_whatsapp_two_downloaded_clicked.png";
 
-import customize_click from "../assets/customize_clicked.png";
-import customize_defaultt from "../assets/customize_default.png";
+import customize_click from "../assets/brand_icon_writing_clicked.png";
+import customize_defaultt from "../assets/brand_icon_writing_unclicked.png";
 
 import UsersIconClicked from "../assets/icons_downloaded_user_clicked.png";
 import UsersIcon from "../assets/icons_downloaded_user_default.png";
@@ -24,7 +24,7 @@ const BottomNavigation = () => {
   useEffect(() => {
     if (location.pathname === "/" || location.pathname === "/home") setActiveTab("HOME");
         else if (location.pathname === "/AskUs") setActiveTab("ASK");
-     else if (location.pathname === "/Customizes") setActiveTab("CUSTOMIZE");
+     else if (location.pathname === "/BrandsPage") setActiveTab("CUSTOMIZE");
     else if (location.pathname === "/Account") setActiveTab("PROFILE");
     else { setActiveTab("");   }
   }, [location]);
@@ -46,11 +46,11 @@ const BottomNavigation = () => {
         iconClass="w-6 h-6"
       />
       <NavItem
-        to="/Customizes"
+        to="/BrandsPage"
         icon={activeTab === "CUSTOMIZE" ? customize_click : customize_defaultt}
-        label="CUSTOMIZE"
+        label="EXPLORE"
         active={activeTab === "CUSTOMIZE"}
-        iconClass="w-9 h-9"  
+        iconClass="w-18 h-10"  
       />
       <NavItem
         to="/Account"
