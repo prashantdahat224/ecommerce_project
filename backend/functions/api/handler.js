@@ -11,6 +11,7 @@ const getAdminCheck = require("./routes/get-admin-check");
 const getAdminPhoneTwo = require("./routes/get-admin-phone-two");
 const getAdminPhone = require("./routes/get-admin-phone");
 const getAllCategories = require("./routes/get-all-categories");
+const getAllBrands = require("./routes/get-all-brands");
 const getOffers = require("./routes/get-offers");
 const getOrderDetails = require("./routes/get-order-details");
 const getOrderTracking = require("./routes/get-order-tracking");
@@ -78,6 +79,7 @@ body: "",
     "/get-admin-phone-two": getAdminPhoneTwo,
     "/get-admin-phone": getAdminPhone,
     "/get-all-categories": getAllCategories,
+    "/get-all-brands": getAllBrands,
     "/get-offers": getOffers,
     "/get-order-details": getOrderDetails,
     "/get-order-tracking": getOrderTracking,
