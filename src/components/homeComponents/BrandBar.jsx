@@ -86,7 +86,7 @@ function Brand_Bar({ brand_id, onChange }) {
                 </div>
               )}
 
-              <p className="mt-1 text-xs font-medium text-center">
+              <p className="mt-1 text-xs font-medium text-center truncate"> {/* added - truncate */}
                 {brand.name}
               </p>
             </div>

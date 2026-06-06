@@ -73,7 +73,7 @@ function CategoryBar({ categories = [], loading = false, cat_id, onChange }) {
                   <p className="text-gray-500 text-xs text-center">No Image</p>
                 </div>
               )}
-              <p className="mt-1 text-xs font-medium text-center">
+              <p className="mt-1 text-xs font-medium text-center truncate"> {/* added - truncate */}
                 {cat.name}
               </p>
             </div>

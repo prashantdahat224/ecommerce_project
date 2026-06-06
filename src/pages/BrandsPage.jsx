@@ -72,6 +72,11 @@ export default function BrandsPage() {
         ))}
       </div>
     </div>
+    
+     <div className="h-26 lg:hidden">
+      <BottomNavigation />
+      </div>
       </div >
+      
   );
 }

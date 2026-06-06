@@ -72,6 +72,10 @@ export default function Categories() {
         ))}
       </div>
     </div>
+
+     <div className="h-26 lg:hidden">
+      <BottomNavigation />
+      </div>
       </div >
   );
 }
