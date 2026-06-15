@@ -5,6 +5,7 @@ import CategoriesPlaceholder from "../components/placeHolder/CategoriesPlacehold
 import back from "../assets/icon_download_back.png";
 import LazyImage from "../components/placeHolder/lazyImage";
  import { API_URL } from "../config/api";
+ import BottomNavigation from "../components/BottomNavigation";
 
 export default function BrandsPage() {
   const [categories, setCategories] = useState([]);

@@ -38,15 +38,7 @@ import LogOutButton  from "./pages/logOutButton";
 //import DeleteProductPost from "./pages/admin_only/DeleteProductPost";
 import Search from "./pages/Search"
 import WishListPage from "./pages/WishListPage";
- //import Manage_category from "./pages/admin_only/Manage_category";
-//import ManageKeywords from "./pages/admin_only/ManageKeywords";
-//import ManageImageCategory from "./pages/admin_only/ManageImageCategory";
-//import ManageTrendingKeywords from "./pages/admin_only/ManageTrendingKeywords";
-//import SearchProductID from "./pages/admin_only/SearchProductID";
-//import OfferUploadNew from "./pages/admin_only/OfferUploadNew";
-//import EditDetailsOfferNew from "./pages/admin_only/EditDetailsOfferNew";
-//import UploadNewOfferPoster from "./pages/admin_only/UploadNewOfferPoster";
-
+  
 import CategoryProducts from "./pages/Extra/CategoryProducts";
 import BrandsProducts from "./pages/Extra/BrandsProducts";
 //import AdminDetailsPage from "./pages/admin_only/AdminDetailsPage";
@@ -56,12 +48,7 @@ import CategoriesPage from "./pages/CategoriesPage";
 import BrandsPage from "./pages/BrandsPage";
 import OrdersPage from "./pages/OrdersPage";
 import AskUs from "./pages/AskUs";
- 
-//import EditKeywordAndCategory from "./pages/admin_only/EditKeywordAndCategory";
-//import AdminProfilePassword from "./pages/admin_only/AdminProfilePassword";
-//import EditOrder from "./pages/admin_only/EditOrders";
-//import EditOrderDetailsPage from "./pages/admin_only/EditOrdeDetailsPage";
-//import EditOrderTracking from "./pages/admin_only/EditOrderTracking";
+  
 import OrderDetails from "./pages/OrderDetails";
 import OrderTracking from "./pages/OrderTracking";
 import ProductCartNew from "./pages/ProductCartNew";
@@ -122,36 +109,7 @@ useEffect(() => {
 }, []);
 
 
-      /////////////////
-    //     <Route path="/admin_only" element={<AdminRoute />}>
- 
-              
-    //    <Route index element={<TestingPage />} />
-    //    <Route path="Manage_category" element={<Manage_category />} />
-    //   <Route path="editKeywordAndCategory/:productId" element={<EditKeywordAndCategory />} /> 
-    //  <Route path="new-offer-upload/:posterId" element={<EditDetailsOfferNew />} /> 
-    //   <Route path="ManageKeywords" element={<ManageKeywords />} />
-    //   <Route path="AdminProfilePassword" element={<AdminProfilePassword />} />
-    //   <Route path="EditOrder" element={<EditOrder />} />
-    //   <Route path="UploadNewOfferPoster" element={<UploadNewOfferPoster />} />
-    //   <Route path="ManageImageCategory/:productId" element={<ManageImageCategory />} />
-    //   <Route path="ManageTrendingKeywords" element={<ManageTrendingKeywords />} />
-    //   <Route path="SearchProductID/:productIds" element={<SearchProductID />} />
-    //   <Route path="OfferUploadNew" element={<OfferUploadNew />} />
-    //   <Route path="AdminDetailsPage" element={<AdminDetailsPage />} />
-    //   <Route path="AdminSelect" element={<AdminSelect />} />
-
- 
-    //    <Route path="ProductPostUpload" element={<ProductPostUpload />} />
-    //   <Route path="EditProductPost" element={<EditProductPosts />} /> 
-    //   <Route path="AdminProductSearch" element={<AdminProductSearch />} /> 
-    //   {/* <Route path="edit-products" element={<EditProductPosts />} />   */}
-    //   <Route path="EditProductDetails/:id" element={<EditProductDetails />} />
-    //   <Route path="EditOrderDetailsPage/:orderId" element={<EditOrderDetailsPage />} />
-    //   <Route path="EditOrderTracking/:orderId" element={<EditOrderTracking />} />
-    //   <Route path="delete-product/:id" element={<DeleteProductPost />} />
-    //   <Route path="AdminOption" element={<AdminOption />} />
- 
+       
     //   </Route>
            //////////////////////
     
