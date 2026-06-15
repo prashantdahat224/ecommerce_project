@@ -59,11 +59,11 @@ export default function BrandsPage() {
             className="cursor-pointer flex flex-col items-center"
           >
             {/* Image */}
-            <div className="w-20 h-20 aspect-square overflow-hidden rounded-full bg-gray-100">
+            <div className="w-15 h-15 aspect-square overflow-hidden rounded-full bg-gray-100">
               {!(category.brand_image ==="") &&(<LazyImage
                 src={category.brand_image}
                 alt={category.name}
-                className="w-20 h-20 object-cover transition-transform group-hover:scale-105"
+                className="w-15 h-15 object-cover transition-transform group-hover:scale-105"
               />)}
             </div>
 

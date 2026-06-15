@@ -5,6 +5,8 @@ import CategoriesPlaceholder from "../components/placeHolder/CategoriesPlacehold
 import back from "../assets/icon_download_back.png";
 import LazyImage from "../components/placeHolder/lazyImage";
  import { API_URL } from "../config/api";
+  import BottomNavigation from "../components/BottomNavigation";
+
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
@@ -58,11 +60,12 @@ export default function Categories() {
             className="cursor-pointer flex flex-col items-center"
           >
             {/* Image */}
-            <div className="w-20 h-20 aspect-square overflow-hidden rounded-full bg-gray-100">
-              {!(category.category_image ==="") &&(<LazyImage
+            <div className="w-15 h-15 aspect-square overflow-hidden rounded-full bg-gray-100">
+              {!(category.category_image ==="") &&(
+                <LazyImage
                 src={category.category_image}
                 alt={category.name}
-                className="w-20 h-20 object-cover transition-transform group-hover:scale-105"
+                className="w-15 h-15 object-cover transition-transform group-hover:scale-105"
               />)}
             </div>
 
