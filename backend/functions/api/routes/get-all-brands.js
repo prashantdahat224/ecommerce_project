@@ -1,4 +1,4 @@
-// get all categories
+// get-all-brands
 const { createClient } = require("@supabase/supabase-js");
 
 const supabase = createClient(
@@ -28,7 +28,7 @@ exports.handler = async (event) => {
 
       return {
         ...cat,
-        category_image: publicUrl,
+        brand_image: publicUrl,
       };
     });
 

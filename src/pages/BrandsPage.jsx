@@ -68,7 +68,7 @@ export default function BrandsPage() {
             </div>
 
             {/* Name */}
-            <p className="text-sm mt-1 text-center truncate">{category.name}</p>
+            <p className="text-sm mt-1 text-center break-words leading-4 line-clamp-2 w-20">{category.name}</p>
           </div>
         ))}
       </div>
