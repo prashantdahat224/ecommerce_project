@@ -1,4 +1,4 @@
-// get-all-brands.js (AWS Lambda)
+// get-main-categories.js (AWS Lambda)
 
 const { createClient } = require("@supabase/supabase-js");
 
@@ -16,32 +16,24 @@ exports.handler = async (event) => {
   };
 
   try {
-    const mainCategoryId = event.queryStringParameters?.main_category_id;
-
-    let query = supabase
-      .from("brand")
-      .select("id, name, brand_image, main_category_id")
+    const { data, error } = await supabase
+      .from("main_categories")
+      .select("id, name, main_category_image")
       .order("trending_score", { ascending: false, nullsFirst: false });
-
-    if (mainCategoryId) {
-      query = query.eq("main_category_id", mainCategoryId); // ✅ filter by parent
-    }
-
-    const { data, error } = await query;
 
     if (error) throw error;
 
     const withUrls = (data || []).map(cat => {
-      if (!cat.brand_image) return cat;
+      if (!cat.main_category_image) return cat;
 
       const { data: urlData } = supabase
         .storage
         .from("category-images")
-        .getPublicUrl(cat.brand_image);
+        .getPublicUrl(cat.main_category_image);
 
       return {
         ...cat,
-        brand_image: urlData?.publicUrl || null
+        main_category_image: urlData?.publicUrl || null
       };
     });
 

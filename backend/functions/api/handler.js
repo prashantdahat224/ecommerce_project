@@ -38,6 +38,7 @@ const homeData = require("./routes/home-data"); //
 const brand = require("./routes/brands"); //   
 const brandsProduct = require("./routes/brand-products"); //   
 const getBrandById = require("./routes/get-brand-by-id");
+const getAllCategories = require("./routes/get-all-categories");
 
 
 
@@ -105,6 +106,7 @@ body: "",
                        "/brands": brand,      
                        "/brand-products": brandsProduct,    
                        "/get-brand-by-id": getBrandById,  
+                        "/get-all-categories": getAllCategories,
       
     "/": homeIndex,
   };

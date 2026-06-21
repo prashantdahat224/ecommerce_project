@@ -78,10 +78,10 @@ function ProductCard({ product }) {
   return (
     <div className="w-40 h-64">
       
-      {/* <button onClick={()=>setCartMessage(true)}> </button> */}
+      {/* <button onClick={()=>setCartMessage(true)}> </button> 58 */}
 
     <Link to={`/product/${product.id}`}>
-    <div className="w-40 h-58 rounded-md border border-neutral-200 bg-white overflow-hidden lg:max-w-[190px]">
+    <div className="w-40 h-64 rounded-md border border-neutral-200 bg-white overflow-hidden lg:max-w-[190px]">
       
     
       
@@ -104,7 +104,7 @@ function ProductCard({ product }) {
       <div className="ml-1 p-1">
        
         {/* TITLE //brand name */}
-        <h3 className="text-sm text-neutral-900 tracking-widest truncate"> {/* added - truncate , deleted- line-clamp-2, leading-snug*/}
+        <h3 className="text-[13px] text-neutral-900 tracking-widest truncate"> {/* added - truncate , deleted- line-clamp-2, leading-snug*/}
           {product.name}
         </h3>
 
