@@ -17,7 +17,7 @@ exports.handler = async (event) => {
 
   try {
     const { data, error } = await supabase
-      .from("main_categories")
+      .from("category_main")
       .select("id, name, main_category_image")
       .order("trending_score", { ascending: false, nullsFirst: false });
 
