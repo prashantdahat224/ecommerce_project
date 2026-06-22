@@ -62,7 +62,7 @@ const whatsappUrl = phoneNumber
       <div className="flex justify-center">
       <a
              onClick={() => navigate("/AboutUs")}   
-                className="mt-7 border border-blue-600 bg-white items-center justify-center gap-3 text-blue-600 font-semibold py-3 px-6 rounded-xl transition "
+                className="mt-4 border border-blue-600 bg-white items-center justify-center gap-3 text-blue-600 font-semibold py-3 px-6 rounded-xl transition "
               >
                  
                 About Us/Contact Us
