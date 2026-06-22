@@ -52,7 +52,7 @@ const whatsappUrl = phoneNumber
           <div className="sticky top-0 bg-white z-50 border border-gray-300">
             <div className="flex items-center gap-2 ml-4 p-1">
               <img src={back} className="h-9 w-9" onClick={() => navigate(-1)} />
-                           <h1 className="text-lg font-semibold"> Ask us </h1>
+                <h1 className="text-lg font-semibold"> Ask us </h1>
             </div>
              
           </div>
@@ -62,9 +62,10 @@ const whatsappUrl = phoneNumber
       <div className="flex justify-center">
       <a
              onClick={() => navigate("/AboutUs")}   
-                className="mt-4 border border-blue-600 bg-white items-center justify-center gap-3 text-blue-600 font-semibold py-3 px-6 rounded-xl transition "
+                className="mt-4 border border-blue-600 bg-white items-center justify-center gap-3 
+                text-blue-600 font-semibold py-3 px-6 rounded-xl transition "
               >
-                 
+              
                 About Us/Contact Us
               </a></div>
 

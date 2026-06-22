@@ -36,8 +36,7 @@ const LoginDialog_two = ({ open, onClose }) => {
            
           
         </div>
-        <div className="flex space-x-4 mt-5">
-          
+<div className="flex flex-col space-y-4 mt-5">          
           <button
             onClick={onClose}
             className="px-5 py-2 bg-gray-200 text-sm text-gray-800 font-medium rounded-lg shadow hover:bg-gray-300 transition"
