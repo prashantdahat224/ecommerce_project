@@ -18,22 +18,22 @@ exports.handler = async (event) => {
   try {
     const { data, error } = await supabase
       .from("category_main")
-      .select("id, name, main_category_image")
+      .select("id, name, category_image")
       .order("trending_score", { ascending: false, nullsFirst: false });
 
     if (error) throw error;
 
     const withUrls = (data || []).map(cat => {
-      if (!cat.main_category_image) return cat;
+      if (!cat.category_image) return cat;
 
       const { data: urlData } = supabase
         .storage
         .from("category-images")
-        .getPublicUrl(cat.main_category_image);
+        .getPublicUrl(cat.category_image);
 
       return {
         ...cat,
-        main_category_image: urlData?.publicUrl || null
+        category_image: urlData?.publicUrl || null
       };
     });
 
