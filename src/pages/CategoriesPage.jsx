@@ -81,10 +81,10 @@ export default function Categories() {
         </div>
       </div>
 
-<div className="flex lg:mx-60" style={{ minHeight: "100vh" }}>
+<div className="flex lg:mx-60" style={{ height: "calc(100vh - 60px)" }}>
 
         {/* LEFT - Main Categories-, bg-gray-50 */}
-<div className="w-20 flex-shrink-0 bg-gray-200 overflow-y-auto border-r border-gray-200 min-h-screen">
+<div className="w-20 flex-shrink-0 bg-gray-150 overflow-y-auto border-r border-gray-200 h-full">
           {mainCategories.map((main) => {
             const isSelected = main.id === selectedMainId;
 
@@ -92,7 +92,7 @@ export default function Categories() {
               <div
                 key={main.id}
                 onClick={() => setSelectedMainId(main.id)}
-                className={`flex flex-col items-center py-3 cursor-pointer ${
+                className={`flex flex-col items-center py-3 cursor-pointer border-b border-gray-200 ${
                   isSelected ? "bg-white border-l-4 border-[#ffd912]" : ""
                 }`}
               >
@@ -118,7 +118,7 @@ export default function Categories() {
         </div>
 
         {/* RIGHT - Sub Categories */}
-<div className="flex-1 px-2 py-4 overflow-y-auto min-h-screen">
+<div className="flex-1 px-2 py-4 overflow-y-auto h-full">
           {loadingSub ? (
             <CategoriesPlaceholder />
           ) : (
