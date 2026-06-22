@@ -14,7 +14,6 @@ export default function AboutUs() {
                   <img src={back} className="h-9 w-9" onClick={() => navigate(-1)} />
                                <h1 className="text-lg font-semibold"> About Us/Contact Us </h1>
                 </div>
-                 
               </div>
 
     <div className="min-h-screen bg-gray-50 px-6 py-12 flex items-center justify-center">

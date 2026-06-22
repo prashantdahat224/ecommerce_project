@@ -36,7 +36,7 @@ const LoginDialog_two = ({ open, onClose }) => {
            
           
         </div>
-        <div className="flex justify-center space-x-4 mt-5">
+        <div className="flex space-x-4 mt-5">
           
           <button
             onClick={onClose}
