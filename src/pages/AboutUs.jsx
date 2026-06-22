@@ -90,9 +90,8 @@ This is our way of redefining how the world discovers Indian design.
             <h3 className="text-xl font-semibold text-blue-500 mb-2">
               Contact Us
             </h3>
-            <p className="text-gray-600">
-              EMAIL - Namaste@wishmos.com
-              CONTACT NUMBER - +91 8552837098
+            <p className="text-gray-600 text-sm">
+              EMAIL - Namaste@wishmos.com CONTACT NUMBER - +91 8552837098
               INSTA - wishmos.co
             </p>
           </div>

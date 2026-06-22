@@ -59,13 +59,14 @@ const whatsappUrl = phoneNumber
     <div className="bg-gray-50 min-h-screen">
 
       {/* Hero Section */}
+      <div className="flex justify-center">
       <a
              onClick={() => navigate("/AboutUs")}   
-                className="mt-4 bg-blue-600 items-center justify-center gap-3 text-white font-semibold py-3 px-6 rounded-xl transition "
+                className="mt-7 border border-blue-600 bg-blue-600 items-center justify-center gap-3 text-blue-600 font-semibold py-3 px-6 rounded-xl transition "
               >
                  
                 About Us/Contact Us
-              </a>
+              </a></div>
 
       <section className="bg-blue-600 text-white mt-6 py-10 px-6">
         <div className="max-w-5xl mx-auto text-center">
