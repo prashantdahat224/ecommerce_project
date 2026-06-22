@@ -59,11 +59,24 @@ const whatsappUrl = phoneNumber
     <div className="bg-gray-50 min-h-screen">
 
       {/* Hero Section */}
-      <section className="bg-blue-600 text-white py-10 px-6">
+      <a
+             onClick={() => navigate("/AboutUs")}   
+                className="mt-4 bg-blue-600 items-center justify-center gap-3 text-white font-semibold py-3 px-6 rounded-xl transition "
+              >
+                 
+                About Us/Contact Us
+              </a>
+
+      <section className="bg-blue-600 text-white mt-6 py-10 px-6">
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+
+        
+
+
+          <h1 className="text-4xl md:text-5xl font-bold  mb-6">
             We Are a Trusted Platform Delivering the Best Products for You
           </h1>
+
           <p className="text-lg md:text-xl mb-8 text-white"> {/*text-blue-100 */}
            So many customers trust us for quality, reliability, and
             exceptional service.

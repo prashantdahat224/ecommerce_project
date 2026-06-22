@@ -44,6 +44,12 @@ const LoginDialog_two = ({ open, onClose }) => {
           >
             Skip for now and explore
           </button>
+          <button
+            onClick={onClose}
+            className="px-5 py-2 bg-gray-200 text-sm text-gray-800 font-bold rounded-lg shadow hover:bg-gray-300 transition"
+          >
+            ABOUT US/CONTACT US
+          </button>
 
         </div>
       </div>

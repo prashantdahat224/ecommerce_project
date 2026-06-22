@@ -12,7 +12,7 @@ export default function AboutUs() {
               <div className="sticky top-0 bg-white z-50 border border-gray-300">
                 <div className="flex items-center gap-2 ml-4 p-1">
                   <img src={back} className="h-9 w-9" onClick={() => navigate(-1)} />
-                               <h1 className="text-lg font-semibold"> About Us </h1>
+                               <h1 className="text-lg font-semibold"> About Us/Contact Us </h1>
                 </div>
                  
               </div>
@@ -21,7 +21,7 @@ export default function AboutUs() {
       <div className="max-w-5xl w-full">
         {/* Heading */}
         <h1 className="text-2xl md:text-2xl font-bold text-center text-black mb-8">
-          About Us
+           Get to know us
         </h1>
 
         {/* Intro */}
@@ -68,6 +68,7 @@ This is our way of redefining how the world discovers Indian design.
               We pick products to ensure top-notch quality.
             </p>
           </div>
+
           <div className="bg-white shadow rounded-lg p-6 text-center">
             <h3 className="text-xl font-semibold text-blue-500 mb-2">
               Trust
@@ -76,6 +77,7 @@ This is our way of redefining how the world discovers Indian design.
               Transparent policies and secure payments.
             </p>
           </div>
+
           <div className="bg-white shadow rounded-lg p-6 text-center">
             <h3 className="text-xl font-semibold text-blue-500 mb-2">
               Service
@@ -84,6 +86,17 @@ This is our way of redefining how the world discovers Indian design.
               Our support team is here to help you anytime.
             </p>
           </div>
+          <div className="bg-white shadow rounded-lg p-6 text-center">
+            <h3 className="text-xl font-semibold text-blue-500 mb-2">
+              Contact Us
+            </h3>
+            <p className="text-gray-600">
+              EMAIL - Namaste@wishmos.com
+              CONTACT NUMBER - +91 8552837098
+              INSTA - wishmos.co
+            </p>
+          </div>
+
         </div>
       </div>
     </div>
