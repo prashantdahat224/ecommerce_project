@@ -124,18 +124,17 @@ export default function ProductDetails() {
   //     alert("Sharing not supported on this browser");
   //   }
   // };
-
+  
 
   const handlePurchase = () => {
-    if (!user) {
 
-      setShowDialog(true)
-    } else {
-      setPurchaseOpen(false);
-    }
+    // if (!user) {
 
-
-
+    //   setShowDialog(true)
+    // } else {
+    //   setPurchaseOpen(false);
+    // }
+      window.open(product.link, "_blank")
   }
 
 
